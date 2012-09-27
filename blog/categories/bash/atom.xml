@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Bash | IFHO]]></title>
+  <link href="http://gurgeh.github.com/blog/categories/bash/atom.xml" rel="self"/>
+  <link href="http://gurgeh.github.com/"/>
+  <updated>2012-09-27T18:48:32+02:00</updated>
+  <id>http://gurgeh.github.com/</id>
+  <author>
+    <name><![CDATA[David Fendrich]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rescuing a hosed system using only Bash]]></title>
+    <link href="http://gurgeh.github.com/blog/2010/08/27/rescuing-hosed-system-using-only-bash/"/>
+    <updated>2010-08-27T00:00:00+02:00</updated>
+    <id>http://gurgeh.github.com/blog/2010/08/27/rescuing-hosed-system-using-only-bash</id>
+    <content type="html"><![CDATA[<div class='post'>
+<span class="Apple-style-span" style="font-size: x-large;">Prelude</span><br />Yesterday I was in a productive mood. "Let's upgrade the ancient Gentoo Linux install on that server that nobody dares to use because the OS is too shoddy", I thought. Since the Gentoo image was from 2005 and never updated, it seemed impossible to upgrade it using normal methods. There were dependencies blocking each other and just an all around awful mess.&nbsp;I downloaded the latest install tarball and decided to just extract it right over the old install. "What is the worst thing that can happen", right?<br /><br />As it turned out, nothing special happened. It all worked smoothly. Until I ran "emerge" - the package manager for Gentoo. It decided that all those installed packages were quite unnecessary and proceeded to uninstall everything. <b>Everything. </b>Until it could uninstall no more, because it had broken itself.<br /><br /><span class="Apple-style-span" style="font-size: x-large;">Challenge</span><br />Now I had a system without anything in /bin /sbin /usr/bin, etc. Everything was gone. All that I had left was two remote ssh connections from my desktop which, quite heroically, stayed up despite the best efforts of emerge. I could not open any new connections. The server itself is located on a magical island, far, far away, called Hisingen. I had no intention of making a trip there. Yet.<br /><br />Ok, what can we do with no binaries?<br />This is pretty much it:<br /><a href="http://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html">http://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html</a><br /><br />Notice that such practical commands as "ls", "mv", "ed" and "cp" are not built in. This means that we cannot list or copy files. Or rename them. Or move them. Or edit them. "echo" and "cd" is ok, though. Also we can create new files with echo "blabla" &gt; theFile.<br /><br />"Bwaha! All I have to do is use tab completion to see what files are in a directory". I chuckled triumphantly to myself, my seductive beard dancing in the wind. Luckily tab completion reported that my /bin/ was full of executables. Unluckily /bin/ was not actually full of executables when I tried to run them. It seems that Bash or Linux or someone had cached the tab completion results.<br /><br />Since I had the Gentoo tbz-image still in the root directory, all I needed was a way to extract that and I would have all my precious programs back.<br /><br /><span class="Apple-style-span" style="font-size: x-large;">Remote file copy</span><br /><br />OK.. how do I get bzip2 and tar to the server? Well, using echo "...." &gt; file, it is possible to create new files. But how would you write binary data using echo? It turns out that one can write any byte using \x-hexadecimal escape codes. Unfortunately if you write the zero-byte, \x00, echo terminates. Executables or full of zero-bytes so we need a way to write them too. Well, it turns out that echo can write zero-bytes without terminating using octal escape codes - \0000 will do the trick.<br /><br />I created a Python program for taking a binary file and convert it to several lines of the type:<br /><br /><blockquote>&gt; echo -en $'\x6e\\0000\x5f\x69\x6e\x69\x74\\0000\x6c\x69\x62\x63\x2e\x73\x6f\x2e\x36\\0000\x66\x66\x6c\x75\x73\x68\\0000\x73\x74\x72\x63\x70\x79\\0000\x66\x63\x68\x6d\x6f\x64\\0000\x65\x78\x69\x74\\0000\x73\x74\x72\x6e\x63\x6d\x70\\0000\x70\x65\x72\x72\x6f\x72\\0000\x73\x74\x72\x6e\x63\x70\x79\\0000\x73\x69\x67\x6e\x61\x6c\\0000\x5f\x5f\x73\x74\x61\x63\x6b\x5f\x63\x68\x6b\x5f\x66\x61\x69\x6c\\0000\x73\x74\x64\x69\x6e\\0000\x72\x65\x77' &gt; myfile</blockquote><blockquote>&gt; echo -en $'\x69\x6e\x64\\0000\x69\x73\x61\x74\x74\x79\\0000\x66\x67\x65\x74\x63\\0000\x73\x74\x72\x6c\x65\x6e\\0000\x75\x6e\x67\x65\x74\x63\\0000\x73\x74\x72\x73\x74\x72\\0000\x5f\x5f\x65\x72\x72\x6e\x6f\x5f\x6c\x6f\x63\x61\x74\x69\x6f\x6e\\0000\x5f\x5f\x66\x70\x72\x69\x6e\x74\x66\x5f\x63\x68\x6b\\0000\x66\x63\x68\x6f\x77\x6e\\0000\x73\x74\x64\x6f\x75\x74\\0000\x66\x63\x6c\x6f\x73\x65\\0000\x6d\x61\x6c\x6c\x6f\x63\\0000\x72\x65\x6d' &gt;&gt; myfile</blockquote><blockquote>&gt; echo -en $'\x6f\x76\x65\\0000\x5f\x5f\x6c\x78\x73\x74\x61\x74\x36\x34\\0000\x5f\x5f\x78\x73\x74\x61\x74\x36\x34\\0000\x67\x65\x74\x65\x6e\x76\\0000\x5f\x5f\x63\x74\x79\x70\x65\x5f\x62\x5f\x6c\x6f\x63\\0000\x73\x74\x64\x65\x72\x72\\0000\x66\x69\x6c\x65\x6e\x6f\\0000\x66\x77\x72\x69\x74\x65\\0000\x66\x72\x65\x61\x64\\0000\x75\x74\x69\x6d\x65\\0000\x66\x64\x6f\x70\x65\x6e\\0000\x66\x6f\x70\x65\x6e\x36\x34\\0000\x5f\x5f\x73\x74\x72\x63' &gt;&gt; myfile</blockquote><blockquote>&gt; echo -en $'\x61\x74\x5f\x63\x68\x6b\\0000\x73\x74\x72\x63\x6d\x70\\0000\x73\x74\x72\x65\x72\x72\x6f\x72\\0000\x5f\x5f\x6c\x69\x62\x63\x5f\x73\x74\x61\x72\x74\x5f\x6d\x61\x69\x6e\\0000\x66\x65\x72\x72\x6f\x72\\0000\x66\x72\x65\x65\\0000\x5f\x65\x64\x61\x74\x61\\0000\x5f\x5f\x62\x73\x73\x5f\x73\x74\x61\x72\x74\\0000\x5f\x65\x6e\x64\\0000\x47\x4c\x49\x42\x43\x5f\x32\x2e\x34\\0000\x47\x4c\x49\x42\x43\x5f\x32\x2e\x33\\0000\x47\x4c\x49' &gt;&gt; myfile</blockquote><div>Taking care to escape all the backslashes properly turned out to be a bit of a challenge.&nbsp;<i>Fun fact</i>: if you write the hex code for backslash twice, \x53\x53, Bash will first convert them to backslash and then echo will interpret them as a new escape code and convert them to one backslash.</div><div><br /></div><div>Now I could cut and paste (very) small binaries, but I needed to paste a few megabytes. "Why a few megabytes?" you wonder. Well, since emerge removed all libraries as well, I had to compile the executables with all libraries linked statically. As it turns out, this makes a small utility much larger.</div><div><br /></div><div><span class="Apple-style-span" style="font-size: x-large;">Enter Konsole and DBUS</span></div><div>Konsole is a wonderful terminal program. Not only can I write stuff in it and make the text green on black and pretend I am Neo from "the Matrix", I can also control it programmatically via DBUS. This means that I could write a Python program that sends characters to one of my sessions. I had to divide the file up into several messages of the form I showed above, and then send them. If I sent the messages too quickly, they got garbled and everything became a mess, so after each message I had to sleep for a short time.</div><div><br /></div><div>Using this method, I reached the staggering speed of 1K (yes, a thousand bytes) per second. Not quite as snappy as my over fifteen year old 14.4K modem, that could in theory reach 14400 bits per seconds.</div><div><br /></div><div>I think that the final program turned out to be quite useful. Using it, I can send a file from one terminal to another.</div><div><br /></div><div><span class="Apple-style-span" style="font-size: x-large;">Run, Forest, run!</span></div><div>A small problem turned up. How do I execute my executables? Chmod is not accessible and umask, which is a Bash builtin, just sets the maximum allowed privileges, rather than actually deciding how new files are created. As far as I know this problem is unsolvable, if not for a tiny cheat.</div><div><br /></div><div>If you pipe text into a file that is already executable, the resulting file will be executable, even if you overwrite the old file with "&gt;". Since we had a few executable script files lying around in /home, which emerge could not uninstall, it was a simple matter of finding an executable script file and overwriting it.</div><div><br /></div><div>If I had not had any executables, I still hoped that /proc would contain executable links to the still running programs, and that I somehow could pick an unimportant one (without knowing which is which, since I still cannot execute ls or cat or anything like that, remember?) and overwrite it. If Linux would let me.</div><div><br /></div><div><div>Using my trans-terminal copier, I managed to get the 800K&nbsp;<a href="http://www.busybox.net/">busybox</a>&nbsp;(a wonderful tool, which emulates all the standard Linux commands and then some)&nbsp;to my broken server, under the guise "feedback.py". This turned out to pose a new problem, since busybox refuses to run under any other name than busybox or one of it's commands. This is because busybox will check under what name it was called and emulate that command.&nbsp;Feedback.py was not one of the builtins, apparently.&nbsp;Now I needed a way to rename &nbsp;the file to busybox again, so I had to statically compile GNU coreutils (./configure LDFLAGS = "-static" is your friend) and transfer "cp". All 700K of it.</div></div><div><br /></div><div><span class="Apple-style-span" style="font-size: x-large;">Summing up</span></div><div><br /></div><div>Even if I had not had a Gentoo install image lying around, it would not have posed a problem by now, since busybox includes both wget and ftp.</div><div><br /></div><div>I extracted my install image and without doing anything further, I could suddenly make new ssh connections again! Feeling quite heroic, I decided to blog about it, since someone else (or I in the future, God forbid) might find it useful. And here we are.</div><div><br /></div><div>Since the terminal-copy program could also conceivably be useful for someone else, I will post it somewhere public.</div><div><br /></div></div>
+
+
+<h2>Comments</h2>
+
+
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Noel D</div>
+<div class='content'>
+Thank you so much. I renamed a system file on AIX libcrypt.a as root and then none of the commands worked.</div>
+</div>
+<div class='comment'>
+<div class='author'>hsteoh</div>
+<div class='content'>
+Thanks SO MUCH for this page!!! The past weekend, I accidentally hosed the dynamic linker on my remote server, and nothing could run (ssh can&#39;t even start a new session). The only thing left was a root bash shell over the last ssh connection I have to the box. Using your echo trick, I was able to copy a statically-linked busybox over, and recover the system.<br /><br />Just one note, though: you don&#39;t really need konsole or a python script to spool the lines over to the shell; the reason you can&#39;t just copy-n-paste 2000+ echo commands is because bash fiddles with terminal settings after every command, causing the input buffer to lose some characters after every 10 commands or so. The solution is to use downdiagonal&#39;s cat trick to copy the echo commands into a *script* on the target machine, then use (source script_filename) to run it to recreate the binary file. While bash is in the read line loop, it doesn&#39;t fiddle with the terminal, so it will actually be able to read 2000+ lines of echo commands without any mangling. (You can use a utility like xclip to copy an entire file into X11&#39;s clipboard, then transmit the whole thing with a single paste operation.)<br /><br />Of course, the cat trick adds another layer of interpolation, so you&#39;ll need to double-escape all your backslashes, etc..<br /><br />Using this method, I was able to copy about 2705 echo commands using a single copy-n-paste operation to recreate busybox.<br /><br />Thanks again, you saved my life!!</div>
+</div>
+<div class='comment'>
+<div class='author'>previouslysilent</div>
+<div class='content'>
+I&#39;ve never had to recover from such a badly broken system as this, but have had to cope with a system when /lib and /usr/lib have become corrupted so that the dynamically linked /bin and /usr/bin exes have become unusable, so this was an interesting article, thanks for blogging.<br /><br />As ever, the first rule of hosing a system is DONT PANIC. It&#39;s very easy to charge in and make things worse, when some careful preservation of what still works can allow you to recover from what might seem a hopeless situation!</div>
+</div>
+<div class='comment'>
+<div class='author'>downdiagonal</div>
+<div class='content'>
+I don&#39;t think there&#39;s any way to emulate chmod without some herculean effort, but I would love to see it if someone knows a way.<br /><br />Next time, instead of trying to get a copy of busybox to the machine, it would probably be better to use a copy of sash (stand-alone shell). It has much of the functionality of coreutils as shell builtins instead of using symbolic links and changing its behavior based on argv[0] as busybox does.<br /><br />Another useful trick to get files on to the machine is to use bash&#39;s net redirections to grab files from a working machine. You could pretty easily hack together a rudimentary replacement for wget by reading from and writing to /dev/tcp.<br /><br />As far as overwriting links in /proc goes, I was under the impression that /proc only contains symbolic links to executables. For example:<br /><br />$ file /proc/27252/exe <br />/proc/27252/exe: symbolic link to `/bin/bash&#39;<br /><br />When you try to overwrite a broken symbolic link it creates a new file where the link is pointing with default permissions, so I don&#39;t think that that would help.</div>
+</div>
+<div class='comment'>
+<div class='author'>Daivd</div>
+<div class='content'>
+@downdiagonal and @h-i-r.net<br />Interesting.. My shell scripting knowledge is clearly lacking, but I think (hope..) I could have written that cat if I really needed ;).<br /><br />The problem is that even with the bash-cat, I would not have been able to make a good cp, because it would not be copying the execute permissions.<br /><br />If anybody has any suggestions on how to construct a chmod or execute a file without execute permissions, that would be very interesting and quite impressive.<br /><br />Maybe the trick I suggested with overwriting executable hard links in /proc would work?</div>
+</div>
+<div class='comment'>
+<div class='author'>downdiagonal</div>
+<div class='content'>
+Emulate cat with just bash:<br /><br />(IFS=$&#39;\n&#39;;while read line;do echo &quot;$line&quot;;done) &lt; file.ext</div>
+</div>
+<div class='comment'>
+<div class='author'>Ax0n</div>
+<div class='content'>
+Err... I meant echo, not cat.</div>
+</div>
+<div class='comment'>
+<div class='author'>h-i-r.net</div>
+<div class='content'>
+That&#39;s some useful stuff I hadn&#39;t thought of before. I forgot cat would decode hex. Here&#39;s some stuff I whipped up that might have helped you as far as building out a few things for ls, ps and the like: http://www.h-i-r.net/2009/08/cratered-your-linux-box-here-are-some.html</div>
+</div>
+<div class='comment'>
+<div class='author'>Daivd</div>
+<div class='content'>
+@Jeff Goldschrafe<br />&quot;cat&quot; is a program. All my programs were gone. I only had access to what Bash has built in.</div>
+</div>
+<div class='comment'>
+<div class='author'>Daivd</div>
+<div class='content'>
+@Bjartr<br />Neat trick! I did not think of that. Before I did anything else, I found someone who had implemented ls in 1017 bytes using assembler and pasted the binary semi-manually:<br />http://www.muppetlabs.com/~breadbox/software/tiny/<br /><br />It is actually quite a capable version of ls. Later it let me see the size of the files I had transfered.</div>
+</div>
+<div class='comment'>
+<div class='author'>Jeff Goldschrafe</div>
+<div class='content'>
+Couldn&#39;t you have emulated cp with &quot;cat somefile &gt; someotherfile&quot; or some such?</div>
+</div>
+<div class='comment'>
+<div class='author'>Bjartr</div>
+<div class='content'>
+Instead of tab completion to find what&#39;s in a directory you can use echo *</div>
+</div>
+</div>
+
+]]></content>
+  </entry>
+  
+</feed>

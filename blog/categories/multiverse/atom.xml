@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Multiverse | IFHO]]></title>
+  <link href="http://gurgeh.github.com/blog/categories/multiverse/atom.xml" rel="self"/>
+  <link href="http://gurgeh.github.com/"/>
+  <updated>2012-09-27T18:48:32+02:00</updated>
+  <id>http://gurgeh.github.com/</id>
+  <author>
+    <name><![CDATA[David Fendrich]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Coincidence?]]></title>
+    <link href="http://gurgeh.github.com/blog/2007/09/06/coincidence/"/>
+    <updated>2007-09-06T00:00:00+02:00</updated>
+    <id>http://gurgeh.github.com/blog/2007/09/06/coincidence</id>
+    <content type="html"><![CDATA[<div class='post'>
+I once read a short story about the creation of the world's most powerful computer. In essence, each time they tried to turn it on, they had some minor misfortune, a power outage, the maid accidentaly tripped on, and unplugged, the power cord, etc. The highly technical twist in the end was that since we live in a <a href="http://en.wikipedia.org/wiki/Multiverse">Multiverse</a>, all things that can happen happens in a separate universe. It turns out that the computer was so advanced (or something) that it turned in to a black hole when switched on, destroying all life. Since the observers could only exist in the universes where the computer remained switched off, they experienced these "coincidences", that protected them.<br /><br /><span style="font-size:130%;">A database of all human knowledge</span><br /><br />When I read up a bit on <a href="http://en.wikipedia.org/wiki/Cyc">Cyc</a>, the other day, I came upon a competing project that I, myself, once added some <span style="font-style: italic;">mindpixels</span> to.<a href="http://en.wikipedia.org/wiki/Mindpixel"> </a><blockquote><a href="http://en.wikipedia.org/wiki/Mindpixel">Mindpixel</a> was a web-based collaborative <a href="http://en.wikipedia.org/wiki/List_of_notable_artificial_intelligence_projects" title="List of notable artificial intelligence projects"></a>artificial intelligence project which aimed to create a database of millions of human validated true/false statements, or probabilistic propositions.</blockquote>Unfortunately the project is now defunct, since the founder Chris McKinstry committed suicide on <a href="http://en.wikipedia.org/wiki/23rd_January" title="23rd January"></a>23rd January, 2006.<a href="http://en.wikipedia.org/wiki/2006" title="2006"></a><br /><br />Well, never fear, because from the Mindpixel page on Wikipedia, we learn that <a href="http://en.wikipedia.org/wiki/Open_Mind_Common_Sense">Open Mind Common Sense</a> is a similar project, run by MIT, whose goal is to build a large common sense knowledge base from the contributions of many thousands of people across the Web.<br /><br />Unfortunately that<span style="font-weight: bold;"> </span>project is <span style="font-weight: bold;">also</span> stalling, since Push Singh who was slated to become a professor at the MIT Media Lab to lead the Commonsense Computing group in 2007, commited suicide on Tuesday, February 28, 2006. Just a month after the other visionary of web knowledge, Chris McKinstry.<br /><br />Let the unreasonable conspiracy theories commence.<br /><a href="http://en.wikipedia.org/wiki/Deaths_in_February_2006" title="Deaths in February 2006"></a></div>
+
+]]></content>
+  </entry>
+  
+</feed>

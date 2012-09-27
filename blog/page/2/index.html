@@ -1,0 +1,420 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>IFHO</title>
+  <meta name="author" content="David Fendrich">
+
+  
+  <meta name="description" content="I would pay a handsome sum (say $1 million, if I could raise it) for a program that could do the following well-defined, seemingly simple, task. &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://gurgeh.github.com/blog/page/2/">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="IFHO" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  
+<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+
+</head>
+
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  <!--  <div id="logoLeft">{</div><div id="logText"><img src="/images/SimpsonDavid.png" width="36" height="36"></div><div id="logoRight">}</div>
+  	<div class="clear"></div>-->
+  </div>
+  <h1><a href="/">IFHO</a></h1>
+  
+    <h2>In Fendrich's Humble Opinion</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:gurgeh.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2007/12/12/deceptively-simple-game/">Deceptively Simple Game</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-12-12T00:00:00+01:00" pubdate data-updated="true">Dec 12<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I would pay a handsome sum (say $1 million, if I could raise it) for a program that could do the following well-defined, seemingly simple, task.<br /><br /><span style="font-size:130%;">General solitaire solver</span><br /><br />Take as input a list of rules for a solitaire-like game. The rules are deterministic transformation rules, defining which moves are legal given a certain position. The rules will be given in whatever Turing complete language the solver likes. For example a simple Scheme dialect without side-effects or a subset of x86 machine code.<br /><br />As long as it solves the task, the solver is free to treat the rules as <span style="font-style: italic;">black boxes</span> that take one position and outputs a, possibly empty, list of potential positions.<br /><br />The solver will then take an initial position as second input and one or more target positions as final input. In fact, to make it more general, take a function that tells whether a position is the target or not.<br /><br />As output, I want a sequence of transformations that leads from the initial position to a target. It does not have to be the shortest sequence, just a sequence. Also I want the answer reasonably fast. At least as fast as I could solve it myself.<br /><br /><span style="font-size:130%;">Extra features</span><br /><br />While I would be very happy with just the above, here are some extra features that would be nice.<br /><br /><ul><li><span style="font-size:100%;">Instead of a binary target function, let me use a continuous target function, and give as output a sequence that gives an end position with as good a score as possible.</span></li><li><span style="font-size:100%;">Accept one or more opponents. This would be useful for playing games - go, shogi, chess, etc, but apart from that would probably be a step towards the stochastic thing below.</span></li><li><span style="font-size:100%;">Allow the transformation rules to behave in a stochastic/probabilistic manner.</span></li></ul><span style="font-size:130%;">Why?</span><br /><br />I have no particular desire to solve solitaire automatically, so why would I want a generalized solitaire solver? Well, if you can input the rules for solitaire, you can also input the rules for <a href="http://seedai.blogspot.com/search/label/Towers%20of%20Hanoi">Towers of Hanoi</a>, which I used as an example of difficult planning in another post. Suddenly you can solve a whole range of reasoning problems, mathematical proofs, reasoning about programs and all sorts of interesting and important stuff.<br /><br />It is interesting to think about the problem from the point of view of solving solitaire or some other simple one-man game. I think it makes it less intimidating.</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2007/09/07/optimal-iq-test/">The Optimal IQ Test</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-09-07T00:00:00+02:00" pubdate data-updated="true">Sep 7<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+The hardest part for me when thinking about seed AI and optimal optimization, is coming up with a good fitness (IQ) test.  Since you need the test to run fast, you end up testing that the algorithm can get somewhere fast, i.e checking only the extreme beginning of a performance curve that ultimately must continue to be good many thousand times longer. What we want to measure is something like the <a href="http://en.wikipedia.org/wiki/Big_O_notation">Big O</a> performance of the algorithm in the limit and not what it looks like the first second of it&#8217;s life. Another problem is that we want the intelligence to be as general as possible and not over-specialized on solving a few test cases.<br /><br /><span style="font-size:130%;">A fitness test of a fitness test</span><br /><br />Recently I got a new idea of what constitutes a good IQ test. Our current approach to seed AI is about developing a really good programmer that can program better versions of itself. A good fitness test is a test that has a high correlation between a program testing good on it and the same program being able to generate new programs that gets even better scores. Not only is this a necessary criterion. It might be <span style="font-weight: bold;">sufficient</span>. Any test of a program which means that this program is likely to produce new programs that perform well (strictly - reach a new global optimum) on the test, might be a good fitness test of what we are after. The test that produces new <span style="font-style: italic;">Masters </span>(see <a href="http://seedai.blogspot.com/2007/09/1250-press-return.html">this post</a>) most frequently might be the best test. Getting the most new Masters over time, also ensures that the test does not take unnecessarily long to run. I am not completely sure, but we might need to force all tests to start with a kernel of an intelligence test (compress this string, predict this numeric sequence, something like that), just to set it of in the right direction and eliminate trivial solutions, like giving all programs a random IQ from some distribution. The trivial solution of giving all programs the perfect IQ, would not be a candidate, because no new globally optimal solutions would be found, so no new Masters would come, and thus that fitness test would not test well on the fitness test test (am I making sense?).<br /><br />Having a fitness test of our fitness test suggests that we can start by evolving a good test, or even more beautifully, co-evolve solution and test.<br /><br />Perhaps I am just dreaming, but it sure would be a beautiful algorithm if it worked&#8230;</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2007/09/06/coincidence/">Coincidence?</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-09-06T00:00:00+02:00" pubdate data-updated="true">Sep 6<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I once read a short story about the creation of the world&#8217;s most powerful computer. In essence, each time they tried to turn it on, they had some minor misfortune, a power outage, the maid accidentaly tripped on, and unplugged, the power cord, etc. The highly technical twist in the end was that since we live in a <a href="http://en.wikipedia.org/wiki/Multiverse">Multiverse</a>, all things that can happen happens in a separate universe. It turns out that the computer was so advanced (or something) that it turned in to a black hole when switched on, destroying all life. Since the observers could only exist in the universes where the computer remained switched off, they experienced these &#8220;coincidences&#8221;, that protected them.<br /><br /><span style="font-size:130%;">A database of all human knowledge</span><br /><br />When I read up a bit on <a href="http://en.wikipedia.org/wiki/Cyc">Cyc</a>, the other day, I came upon a competing project that I, myself, once added some <span style="font-style: italic;">mindpixels</span> to.<a href="http://en.wikipedia.org/wiki/Mindpixel"> </a><blockquote><a href="http://en.wikipedia.org/wiki/Mindpixel">Mindpixel</a> was a web-based collaborative <a href="http://en.wikipedia.org/wiki/List_of_notable_artificial_intelligence_projects" title="List of notable artificial intelligence projects"></a>artificial intelligence project which aimed to create a database of millions of human validated true/false statements, or probabilistic propositions.</blockquote>Unfortunately the project is now defunct, since the founder Chris McKinstry committed suicide on <a href="http://en.wikipedia.org/wiki/23rd_January" title="23rd January"></a>23rd January, 2006.<a href="http://en.wikipedia.org/wiki/2006" title="2006"></a><br /><br />Well, never fear, because from the Mindpixel page on Wikipedia, we learn that <a href="http://en.wikipedia.org/wiki/Open_Mind_Common_Sense">Open Mind Common Sense</a> is a similar project, run by MIT, whose goal is to build a large common sense knowledge base from the contributions of many thousands of people across the Web.<br /><br />Unfortunately that<span style="font-weight: bold;"> </span>project is <span style="font-weight: bold;">also</span> stalling, since Push Singh who was slated to become a professor at the MIT Media Lab to lead the Commonsense Computing group in 2007, commited suicide on Tuesday, February 28, 2006. Just a month after the other visionary of web knowledge, Chris McKinstry.<br /><br />Let the unreasonable conspiracy theories commence.<br /><a href="http://en.wikipedia.org/wiki/Deaths_in_February_2006" title="Deaths in February 2006"></a></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2007/09/05/1250-press-return/">12:50, Press Return</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-09-05T00:00:00+02:00" pubdate data-updated="true">Sep 5<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+The deed is done.<br /><br />I and my friend Nils made a &#8220;sprint&#8221; last night, where we finished the first version of our seed AI.<br /><br />First we made a simple IQ-function that tests how well a program (a Program Generator or <span style="font-style: italic;">PG</span>) can generate new programs (<span style="font-style: italic;">leaves</span>) from feedback of how close a leaf is to what we want.<br /><br />A PG that receives the best IQ so far gets a chance to generate new PG&#8217;s, in effect it becomes a Program Generator Generator. We call this state a <span style="font-style: italic;">Challenger</span>. When a Challenger generates a new PG with the best IQ so far, it has verified that not only does it have good IQ, but it can produce other programs with good IQ, and is thus promoted to the status of <span style="font-style: italic;">Master </span>(and the smart PG gets to be Challenger).<span style="font-style: italic;"><br /></span><br />The programs are generated and run in a circular buffer under a virtual machine, where all sequences of integers are valid programs and no operators can throw exceptions. Such a VM is much slower than machine code, but the process gets faster than if it were running on bare bones x86, because on an x86 (or other architecture) most bytes are meaningless and will throw exceptions, which are slow to process. A PG that is good enough (for example a human) to understand how to write code without generating (many) exceptions, would theoretically run faster on x86, but our current primitive PGs will benefit from a virtual environment.<span style="font-style: italic;"><br /><br /></span>Anyway, we wrote the code, pressed Enter (the title is a reference to the nice movie Pi), and voíla, our random generating seed started finding more intelligent programs than itself - Challengers. After a while, Nils calls it 15 seconds, a Challenger managed to become Master and after a longer while the Master produced a Challenger that later became the third generation Master. Spectacular!<br /><br />Now we just need a better IQ test and a way to inspect the generated programs! Well, we also need tons and tons of hardware. This is the sort of task that could happily use up Google&#8217;s entire computer armada for a year and still benefit from more. Hmm.. perhaps if I ask them nicely..</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2007/08/30/seed-ai/">Seed AI</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-08-30T00:00:00+02:00" pubdate data-updated="true">Aug 30<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<span style="font-size:130%;">Le grand assumption<br /><br /></span>The assumption of <a href="http://en.wikipedia.org/wiki/Seed_AI">seed AI</a> is this: <blockquote>If we can make a program intelligent enough, a &#8220;seed&#8221; of intelligence, we can also make it gradually improve itself.</blockquote>If intelligence can be expressed as a short formula (think Maxwell&#8217;s equations or E = mc<sup>2</sup>), we might not need to make a seed. We will simply have to find that formula. In general, the <a href="http://en.wikipedia.org/wiki/No-free-lunch_theorem">No-Free-Lunch theorem</a> implies that there must always be scope for improvement, but there are nevertheless some promising paths that I will post about some other time.<br /><br />Related to seed AI is the point where an AI can read and make sense of human text, such as Wikipedia, Principia Mathematica, etc. If we can reach that goal, an AI would quickly acquire superhuman cross-disciplinary knowledge, which in turn would help it to digest ever more advanced text. To get there, a program has to have plenty of common sense that we all take for granted. <a href="http://en.wikipedia.org/wiki/Cyc">Cyc</a> is an ambitious, long-running, project that tries to collect all this &#8220;common sense&#8221;.<br /><br />A superintelligent AI would be incredibly useful. Useful beyond your wildest fantasies. <sing>.<br /><br />A more intelligent program is likely harder to improve, but at the same time a more intelligent program is better at improving, so we can have reasonable hope for the improvement process to continue indefinitely (or perhaps converge to a single point - the formula for intelligence), although it is hard to guess what the improvement curve will look like. Will the difficulty increase much faster than the capacity? No one knows. It is tempting to make an analogy with humans and note how hard it is for us to rewire the brain to make us fundamentally more intelligent. For most programs this is probably very different. A program is made to be modified, it is software and not, as our brains, firmware or wetware.<br /><br />If we want to talk about improving programs, <span style="font-weight: bold;">we have to define what it means to improve one&#8217;s intelligence, and thus what it means to be intelligent</span>. We want intelligent systems to be useful. Useful intelligence is, just as science, about <span style="font-style: italic;">prediction, planning and pattern recognition</span>. These are all so intertwined as to be more or less the same thing.<br /><br /><span style="font-size:130%;">Prediction<br /><br /></span>Given certain input we want to predict what the outcome might be. It is nice if this prediction involves not only the most likely outcome, but also estimates of the probabilities of all the possible outcomes. Even better is if the predictor gives an indication for how certain it is about the probabilities.<br /><br />If I roll a regular dice, I am fairly sure that the probability of a 3 showing up is about 16.7%, of course the dice might be damaged or otherwise unfair, or perhaps I miscalculated 1 / 6 or misunderstand the laws of probability, etc. Neverthless, I am fairly certain. On the other hand, I estimate the probability of Sweden beating Brazil the next time they meet in soccer to about 10%, but I am fairly uncertain about that figure. Thus I should be cautious about acting on it, for example not taking bets. I am, however, quite certain that I am uncertain about my last probability estimation. It is probably not very useful to continue this recursion further, neither for me nor for a program, so I&#8217;ll be quite satisfied if my AI knows certainties concerning probabilities, but not certainties about certainties.<br /><br />Two classic examples where prediction is useful are weather forecasts and the stock market.<br /><br /><br /><span style="font-size:130%;">Planning</span><br /><br />Prediction is closely related to planning. One way of formalizing planning is to make an enormous tree, where each choice I can make is a branching point and every consequence along with it&#8217;s probability is also a branching point. In a complex world most of my millions of choices/actions will not have any bearing on me reaching a specific goal, so the tree gets unfeasibly large. The first step is to quickly <span style="font-weight: bold;font-size:100%;" >predict</span><span style="font-size:100%;"> which paths might actually have a significance towards me reaching my goal, thus pruning the tree. Then I have to </span><span style="font-weight: bold;font-size:100%;" >predict</span><span style="font-size:100%;"> what the consequences of my actions are likely to be, making a model of the outside world. Now I have a tree where I can start searching for a solution, in other words make a plan<br /><br />A classic example of a planning problem is <a href="http://en.wikipedia.org/wiki/Towers_of_Hanoi">Towers of Hanoi</a>. It is trivially easy to make a program that solves Towers of Hanoi, but it is harder to construct a general AI that, given the rules to the game, solves it in general. You cannot just exhaustively search your decision tree, because Towers of Hanoi with 30 discs requires 2^30 - 1= 1073741823 moves to complete. This means that the depth of the tree is 10^9 and, given at least two paths on each level, 2^(10^9) nodes. That amounts to more than a 1 followed by 300 million zeroes - a ridiculously large number. The planner must reason about the effects of the rules and <span style="font-style: italic;">recognize the pattern</span> for moving the discs.<br /><br /><br /><span style="font-size:130%;">Pattern recognition<br /></span><br />Recognizing patterns is, among other things, the useful property of being able to spot that given <span style="font-style: italic;">this</span>, <span style="font-style: italic;">that</span> follows more/less frequently. A neat way of deciding if you have spotted a pattern is to invoke <a href="http://en.wikipedia.org/wiki/Minimum_description_length">Minimum Description Length</a> or MDL. 10101010101010&#8230; can be described with the exact digits, or as a repeating pattern of 10s or as alternating 1 and 0. Which one is chosen depends on what language you have chosen to express your pattern in. For longer patterns it makes less and less difference what language you chose. The same reasoning applies to, for example, a picture. If we have a completely black 1000 x 1000 pixel square with a white 500 pixel (in diameter) circle in the middle , then that description is much shorter than actually encoding the image pixel for pixel. We have recognized a pattern.<br /><br />Notice the close relationship between pattern recognition and compression.<br /><br /><span style="font-size:130%;">Intelligence test<br /></span><br />Constructing a true intelligence test, that can be executed reasonably fast, would be very useful in the research of general AI. You have to be careful when designing such a test, because if it is too simple you will end up with an AI that is specialized on solving exactly your test and nothing else.<br /><br />If we had such a test, a fairly simple, but very interesting, experiment could be made.<br /></span></sing><ol><li><span style="font-size:100%;">Start with a program that produces random output. The seed!</span></li><li><span style="font-size:100%;">Measure its intelligence. This producer of random noise is now your first and most intelligent program.</span></li><li><span style="font-size:100%;">Interpret the currently best program&#8217;s output as new programs and measure the intelligence of these programs, give this intelligence as feedback to the generating program.</span></li><li><span style="font-size:100%;">Whenever a program that is more intelligent than the previous most intelligent program is found, use it as the new generator to search for even more intelligent programs.</span></li></ol><span style="font-size:100%;">You might need to add some precautions so that you do not enter an evolutionary dead end, for example by letting different promising generators run in parallell, but the above points are the basic gist of it. This will let you find out how much more time it takes for each successively more intelligent program to construct an even more intelligent program. If you are very, very, lucky and have constructed your intelligence test very well, this might even suffice as the Seed.<br /><br />In coming posts I will describe what the mathematically perfect predictor looks like and what the mathematically perfect planner looks like. They are, at least on the surface, surprisingly dissimilar.<br /></span></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>cognomad</div>
+<div class='content'>
+Thanks for the comment on my knol, David!<BR/>You&#39;re right, it sounds very similar on a high level, &amp; I am sure there are many people who&#39;d agree with the definition. But I don&#39;t know of anyone who used it to derive a universal, low-level, quantitative criterion to select inputs &amp; algorithms. The key is to start from the beginning: raw sensory inputs, &amp; &quot;test&quot; their predictive value, in the process discovering more &amp; more complex patterns. That&#39;s what scalability is all about, if you can&#39;t evaluate pixels, it&#39;ll be super-exponentially more difficult to start from more complex data. That&#39;s why I think Cyc, NLP, &amp; high-level approaches in general are hopeless for AGI.<BR/>I am sorry, but your &quot;Intelligence test&quot; idea, besides it being entirely hypothetical &amp; presumably externally administered, has it exactly backwards. Just like many Algorithmic Learning approaches, you want to generate patterns &amp; algorithms, instead of discovering them in a real world. Quite simply, we predict from experience, these patterns &amp; algorithms will have *no* predictive value beyond mere chance, unless they&#39;re derived from the experience. Notice that the difference between patterns &amp; algorithms is strictly in their origin: the former are discovered &amp; the later are &quot;invented&quot;.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/09/27/octopress-and-github-as-blogging-platform/">Octopress and Github as a blogging platform</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/10/guerilla-my-attempt-to-build-strong-ai/">Guerilla - my attempt to build a strong AI</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/12/28/compression-prediction-and-artificial/">Compression, prediction and artificial intelligence</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/08/27/rescuing-hosed-system-using-only-bash/">Rescuing a hosed system using only Bash</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/08/19/milliblogging-essae-in-7-tweets/">Milliblogging - An essay in 7 tweets</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/gurgeh">@gurgeh</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'gurgeh',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("fnedrik", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/fnedrik" class="twitter-follow-button" data-show-count="false">Follow @fnedrik</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - David Fendrich -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'ifho';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+<a title="Real Time Analytics" href="http://getclicky.com/100529738"><img alt="Real Time Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
+<script src="//static.getclicky.com/js" type="text/javascript"></script>
+<script type="text/javascript">try{ clicky.init(100529738); }catch(e){}</script>
+<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100529738ns.gif" /></p></noscript>
+
+
+</body>
+</html>

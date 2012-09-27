@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Big O | IFHO]]></title>
+  <link href="http://gurgeh.github.com/blog/categories/big-o/atom.xml" rel="self"/>
+  <link href="http://gurgeh.github.com/"/>
+  <updated>2012-09-27T18:48:32+02:00</updated>
+  <id>http://gurgeh.github.com/</id>
+  <author>
+    <name><![CDATA[David Fendrich]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[The optimal IQ test]]></title>
+    <link href="http://gurgeh.github.com/blog/2007/09/07/optimal-iq-test/"/>
+    <updated>2007-09-07T00:00:00+02:00</updated>
+    <id>http://gurgeh.github.com/blog/2007/09/07/optimal-iq-test</id>
+    <content type="html"><![CDATA[<div class='post'>
+The hardest part for me when thinking about seed AI and optimal optimization, is coming up with a good fitness (IQ) test.  Since you need the test to run fast, you end up testing that the algorithm can get somewhere fast, i.e checking only the extreme beginning of a performance curve that ultimately must continue to be good many thousand times longer. What we want to measure is something like the <a href="http://en.wikipedia.org/wiki/Big_O_notation">Big O</a> performance of the algorithm in the limit and not what it looks like the first second of it's life. Another problem is that we want the intelligence to be as general as possible and not over-specialized on solving a few test cases.<br /><br /><span style="font-size:130%;">A fitness test of a fitness test</span><br /><br />Recently I got a new idea of what constitutes a good IQ test. Our current approach to seed AI is about developing a really good programmer that can program better versions of itself. A good fitness test is a test that has a high correlation between a program testing good on it and the same program being able to generate new programs that gets even better scores. Not only is this a necessary criterion. It might be <span style="font-weight: bold;">sufficient</span>. Any test of a program which means that this program is likely to produce new programs that perform well (strictly - reach a new global optimum) on the test, might be a good fitness test of what we are after. The test that produces new <span style="font-style: italic;">Masters </span>(see <a href="http://seedai.blogspot.com/2007/09/1250-press-return.html">this post</a>) most frequently might be the best test. Getting the most new Masters over time, also ensures that the test does not take unnecessarily long to run. I am not completely sure, but we might need to force all tests to start with a kernel of an intelligence test (compress this string, predict this numeric sequence, something like that), just to set it of in the right direction and eliminate trivial solutions, like giving all programs a random IQ from some distribution. The trivial solution of giving all programs the perfect IQ, would not be a candidate, because no new globally optimal solutions would be found, so no new Masters would come, and thus that fitness test would not test well on the fitness test test (am I making sense?).<br /><br />Having a fitness test of our fitness test suggests that we can start by evolving a good test, or even more beautifully, co-evolve solution and test.<br /><br />Perhaps I am just dreaming, but it sure would be a beautiful algorithm if it worked...</div>
+
+]]></content>
+  </entry>
+  
+</feed>
