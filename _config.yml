@@ -4,9 +4,9 @@
 
 # New and better title?
 
-url: http://gurgeh.github.com
-title: Fake Guido
-subtitle: Not your mother's Guido
+url: http://fendrich.se
+title: IFHO
+subtitle: In Fendrich's Humble Opinion
 author: David Fendrich
 simple_search: http://google.com/search
 description: Thoughts on AI, programming and transhumanism
@@ -91,8 +91,8 @@ delicious_user:
 delicious_count: 3
 
 # Disqus Comments
-disqus_short_name:
-disqus_show_comment_count: false
+disqus_short_name: ifho
+disqus_show_comment_count: true
 
 # Google Analytics
 google_analytics_tracking_id:
