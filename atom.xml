@@ -4,7 +4,7 @@
   <title><![CDATA[IFHO]]></title>
   <link href="http://gurgeh.github.com/atom.xml" rel="self"/>
   <link href="http://gurgeh.github.com/"/>
-  <updated>2012-09-28T16:57:12+02:00</updated>
+  <updated>2012-09-28T17:04:37+02:00</updated>
   <id>http://gurgeh.github.com/</id>
   <author>
     <name><![CDATA[David Fendrich]]></name>
@@ -44,7 +44,7 @@
 
 <h3>Context based tab completion</h3>
 
-<p>File based tab completion is great and all, but zsh has tab completion for <em>everything</em>. It has knowledge about an impressive number of tools and scripts. It knows which commands <em>git</em> takes, which hosts are in my hosts file for <em>ssh</em>, which users my system have when I write <em>chmod</em>, available packages to <em>apt-get</em>, etc. Using <tab> when writing commands is a bit like static type checking, since if you don&#8217;t get a completion you are probably writing your argument type in the wrong place.</p>
+<p>File based tab completion is great and all, but zsh has tab completion for <em>everything</em>. It has knowledge about an impressive number of tools and scripts. It knows which commands <em>git</em> takes, which hosts are in my hosts file for <em>ssh</em>, which users my system have when I write <em>chmod</em>, available packages to <em>apt-get</em>, etc. Using [tab] when writing commands is a bit like static type checking, since if you don&#8217;t get a completion you are probably writing your argument type in the wrong place.</p>
 
 <p>For common use cases it is easy to write tab completion specifications for your own scripts.</p>
 
@@ -82,7 +82,7 @@
 
 <h3>Good spelling correction</h3>
 
-<p>Zsh does not care if I write a filename in lowercase or mized or whaterver. when I try <tab> it will first try to complete on the exact match and then use a case insensitive match. Great! It also has spelling correction built-in in other places, suggesting which command you might have meant, etc. You don&#8217;t want full spelling correction on files though (deactivated per default). That is just annoying.</p>
+<p>Zsh does not care if I write a filename in lowercase or mized or whatever. When I try [tab] it will first try to complete on the exact match and then use a case insensitive match. Great! It also has spelling correction built-in in other places, suggesting which command you might have meant, etc. You don&#8217;t want full spelling correction on files though (deactivated per default). That is just annoying.</p>
 
 <h3>Global aliases</h3>
 
@@ -174,7 +174,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN=&quot;%{$fg[blue]%})&quot;
 
 <p><code>plugins=(git mercurial autojump command-not-found python pip github gnu-utils history-substring-search)</code></p>
 
-<p>To use autojump on Ubuntu, you need to <code>sudo apt-get install autojump</code>. That enables you to just write <code>j &lt;directory&gt;</code> and it will jump to the most frequently used directory with that name. A great way to navigate, which naturally can use tab-completion. It just takes some time for your fingers to get used to it. Autojump is not limited to Zsh, of course.</p>
+<p>To use autojump on Ubuntu, you need to <code>sudo apt-get install autojump</code>. That enables you to just write <code>j [directory]</code> and it will jump to the most frequently used directory with that name. A great way to navigate, which naturally can use tab-completion. It just takes some time for your fingers to get used to it. Autojump is not limited to Zsh, of course.</p>
 
 <h3>My configuration</h3>
 
