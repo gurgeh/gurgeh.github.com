@@ -4,7 +4,7 @@
   <title><![CDATA[IFHO]]></title>
   <link href="http://gurgeh.github.com/atom.xml" rel="self"/>
   <link href="http://gurgeh.github.com/"/>
-  <updated>2012-09-27T18:48:32+02:00</updated>
+  <updated>2012-09-28T16:57:12+02:00</updated>
   <id>http://gurgeh.github.com/</id>
   <author>
     <name><![CDATA[David Fendrich]]></name>
@@ -12,6 +12,230 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[No, really. Use Zsh.]]></title>
+    <link href="http://gurgeh.github.com/blog/2012/09/28/no/"/>
+    <updated>2012-09-28T13:23:00+02:00</updated>
+    <id>http://gurgeh.github.com/blog/2012/09/28/no</id>
+    <content type="html"><![CDATA[<p><a href="http://zsh.sourceforge.net/">Zsh</a> is the new hotness. Well newer and hotter than Bash anyway, since the first version of Bash was released in June 1989, while the young and peppy Zsh was released in December 1990. In large parts thanks to the configuration &#8220;skin&#8221; <a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a>, Zsh has gained a lot of popularity during the last year or so. I have used it for a few months myself and could not be happier, unless it produced chocolate ice cream ← <em>note to shell developers</em>.</p>
+
+<p>This is a guide on why you need it and how you install, configure and use it. Sometimes just with links to the relevant sites.</p>
+
+<!--more-->
+
+
+<p>This is written partly for my colleagues, who I think would benefit from using Zsh instead of Bash on their desktops and on our servers.</p>
+
+<h2>So what makes Zsh so great?</h2>
+
+<ol>
+<li>Powerful context based tab completion</li>
+<li>Pattern matching/globbing on alien steroids</li>
+<li>Themeable prompts</li>
+<li>Loadable modules</li>
+<li>Good spelling correction</li>
+<li>Sharing of command history among all running shells (I like my command line history and all my Konsole tabs)</li>
+<li>Global aliases</li>
+</ol>
+
+
+<p>Though I have used it for 10+ years, I am far from a Bash specialist. Some of these things can be enabled in Bash, but AFAIK it is not implemented quite as well.</p>
+
+<h3>Context based tab completion</h3>
+
+<p>File based tab completion is great and all, but zsh has tab completion for <em>everything</em>. It has knowledge about an impressive number of tools and scripts. It knows which commands <em>git</em> takes, which hosts are in my hosts file for <em>ssh</em>, which users my system have when I write <em>chmod</em>, available packages to <em>apt-get</em>, etc. Using <tab> when writing commands is a bit like static type checking, since if you don&#8217;t get a completion you are probably writing your argument type in the wrong place.</p>
+
+<p>For common use cases it is easy to write tab completion specifications for your own scripts.</p>
+
+<h3>Globbing</h3>
+
+<p>Globbing means command line parameter expansion. For example <code>ls *.html</code>. Zsh has it&#8217;s own <em>globbing language</em>. You can sort and filter by exclusion or inclusion on name, size, permission, owner, creation time. Everything.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ls *(.)            # list just regular files
+</span><span class='line'>ls *(/)            # list just directories
+</span><span class='line'>ls -ld *(/om[1,3]) # Show three newest directories. "om" orders by modification. "[1,3]" works like Python slice.
+</span><span class='line'>rm -i *(.L0)       # Remove zero length files, prompt for each file
+</span><span class='line'>ls *(^m0)          # Files not modified today.
+</span><span class='line'>emacs **/main.py   # Edit main.py, wherever it is in this directory tree. ** is great.
+</span><span class='line'>ls **/*(.x)        # List all executable files in this tree
+</span><span class='line'>ls *~*.*(.)        # List all files that does not have a dot in the filename
+</span><span class='line'>ls -l */**(Lk+100) # List all files larger than 100kb in this tree
+</span><span class='line'>ls DATA_[0-9](#c4,7).csv # List DATA_nnnn.csv to DATA_nnnnnnn.csv</span></code></pre></td></tr></table></div></figure>
+
+
+<p>These examples happily borrowed from <a href="http://www.rayninfo.co.uk/tips/zshtips.html">Zzappers Best of ZSH Tips</a>, <a href="http://www.tuxradar.com/content/z-shell-made-easy">Z shell made easy</a> and <a href="http://grml.org/zsh/zsh-lovers.html">Zsh-lovers man page</a>. Skim through them all, when you have decided to give Zsh a try.</p>
+
+<h3>Loadable modules</h3>
+
+<p>Loadable modules are modules that give your shell additional functionality. Sort of like importing a library when you code. They can make the filters above even more interesting. For example expressing date constraints in a natural format. There are examples of using modules in the Zsh-lovers man page and full documentation in the <a href="http://www.math.technion.ac.il/Site/computing/docs/zsh/zsh_21.html">Zsh Modules Documentation</a>.</p>
+
+<h3>Good spelling correction</h3>
+
+<p>Zsh does not care if I write a filename in lowercase or mized or whaterver. when I try <tab> it will first try to complete on the exact match and then use a case insensitive match. Great! It also has spelling correction built-in in other places, suggesting which command you might have meant, etc. You don&#8217;t want full spelling correction on files though (deactivated per default). That is just annoying.</p>
+
+<h3>Global aliases</h3>
+
+<p>Aliases are nice, but global aliases are words that can be used anywhere on the command line, thus you can give certain files, filters or pipes a short name. Some examples:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>alias -g L="|less" # Write L after a command to page through the output.
+</span><span class='line'>alias -g TL='| tail -20'
+</span><span class='line'>alias -g NUL="&gt; /dev/null 2&gt;&1" # You get the idea.</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you want to give a directory an alias, you use <em>hash</em>. <code>hash -d projs=~/projects/</code></p>
+
+<p>Zsh also has suffix aliases, which means that you can tie a file suffix, let&#8217;s say &#8220;pdf&#8221; to a command, for example xpdf. <code>alias -s pdf=xpdf</code> Now if you just type the name of a pdf file, it will be displayed with xpdf. Similar to suffix aliases, if you turn on AUTO_CD, typing the name of a directory cd:s to it.</p>
+
+<h3>Installing Zsh</h3>
+
+<p>OK, so now you know that you need to try Zsh out. What do you do? Simple. Head over to <a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a> and follow the intructions. When installing Zsh, you should customize two things.</p>
+
+<h4>a) The prompt</h4>
+
+<p>Extravagant prompts have become a badge of pride for Zshellers. It is quite easy to write your own prompt. I have:</p>
+
+<p><img src="http://gurgeh.github.com/images/zsh-prompt.png" alt="My Zsh prompt" />
+Note how you can control both the left part and right part of the line. You can also make multi-line prompts, but I like to conserve screen estate.</p>
+
+<p>On the left side I put stuff that are of interest almost all the time. My username, the name of the computer, the last two parts of the directory tree, If I am in a git or hg repository, and if then, which branch (very useful to keep from screwing up) and finally if there are uncomitted code (the X turns in to a neat V when there is nothing to commit).</p>
+
+<p>On the right side, I put the number of jobs running from this terminal, free memory (good reminder on servers) and average CPU load during the last 5 minutes, as reported by <code>uptime</code>. CPU load is expressed as number of CPUs utilized, so to make it meaningful, I also put the number of CPUs in paranthesis after the uptime value. This is also mostly useful if you have many servers with different number of CPUs. If the uptime value exceeds number of CPUs, you know that you have problems. Finally I put a timestamp. Perhaps you think &#8220;How silly, I have a clock on my desktop&#8221;, but the point is not to tell the current time, but that I can scroll back and see when I started a command and how long it took. It keeps a log. Another good thing with keeping colorful stuff on the right side of the prompt is that it makes it easy to scroll through your terminal output and find commands, when your last compile spewed out 200 lines.</p>
+
+<p>Usually the window is much wider than in my screenshot, so you don&#8217;t often run into the right part of the prompt, but if you do, Zsh will magically remove it before you reach it, so it won&#8217;t look cluttered.</p>
+
+<p>This is the code for my prompt. For some reason Github overrides my syntax highlighting settings when I give the gist a filename, so my gists are unnamed today:</p>
+
+<div><script src='https://gist.github.com/3800072.js?file='></script>
+<noscript><pre><code>function prompt_char {
+    git branch &gt;/dev/null 2&gt;/dev/null &amp;&amp; echo '±' &amp;&amp; return
+    hg root &gt;/dev/null 2&gt;/dev/null &amp;&amp; echo '☿' &amp;&amp; return
+    echo '%(!.!.➜)'
+}
+
+
+function parse_hg_dirty {
+  if [[ -n $(hg status -mard . 2&gt; /dev/null) ]]; then
+    echo &quot;$ZSH_THEME_HG_PROMPT_DIRTY&quot;
+  fi
+}
+
+function get_RAM {
+  free -m | awk '{if (NR==3) print $4}' | xargs -i echo 'scale=1;{}/1000' | bc
+}
+
+function get_nr_jobs() {
+  jobs | wc -l
+}
+
+function get_nr_CPUs() {
+  grep -c &quot;^processor&quot; /proc/cpuinfo
+}
+
+function get_load() {
+  uptime | awk '{print $11}' | tr ',' ' '
+}
+
+PROMPT='%{$fg_bold[green]%}%n@%m %{$fg[cyan]%}%2c %{$fg_bold[blue]%}$(git_prompt_info)$(parse_hg_dirty)%{$fg_bold[blue]%} %{$fg_bold[red]%}$(prompt_char) % %{$reset_color%}'
+
+RPROMPT='%{$fg_bold[red]%}[$(get_nr_jobs), $(get_RAM)G, $(get_load)($(get_nr_CPUs))] %{$fg_bold[green]%}%*%{$reset_color%}'
+
+ZSH_THEME_HG_PROMPT_PREFIX=&quot;hg:(%{$fg[red]%}&quot;
+ZSH_THEME_GIT_PROMPT_PREFIX=&quot;git:(%{$fg[red]%}&quot;
+ZSH_THEME_GIT_PROMPT_SUFFIX=&quot;%{$reset_color%}&quot;
+ZSH_THEME_GIT_PROMPT_DIRTY=&quot;%{$fg[blue]%}) %{$fg[yellow]%}✗%{$reset_color%}&quot;
+ZSH_THEME_HG_PROMPT_DIRTY=&quot;%{$fg[yellow]%}✗%{$reset_color%}&quot;
+ZSH_THEME_GIT_PROMPT_CLEAN=&quot;%{$fg[blue]%})&quot;
+</code></pre></noscript></div>
+
+
+<p>You can take it or any other from the <a href="https://github.com/robbyrussell/oh-my-zsh/wiki/themes">theme gallery</a> (you should visit that now, it is full of themes and colorful screenshots of what you can use immediately after installing oh-my-zsh) as a basis if you want to write your own. You can call all the scripts and commands that your heart desire to produce the prompt output.</p>
+
+<p>Currently, my prompt is not part of the oh-my-zsh distribution (I have not made a pull request. Perhaps I should?), so if you want to use it, just download it and copy it to ~/.oh-my-zsh/themes/gurgeh.zsh-theme.</p>
+
+<p>A good prompt really is a great help.</p>
+
+<h4>And b) the plugins</h4>
+
+<p>Oh-my-Zsh has a lot of great plugins. You can read more about them there. I found it easiest to just read through the simple source code of the ones that interested me. These are the ones that I use (from my  ~/.zshrc file):</p>
+
+<p><code>plugins=(git mercurial autojump command-not-found python pip github gnu-utils history-substring-search)</code></p>
+
+<p>To use autojump on Ubuntu, you need to <code>sudo apt-get install autojump</code>. That enables you to just write <code>j &lt;directory&gt;</code> and it will jump to the most frequently used directory with that name. A great way to navigate, which naturally can use tab-completion. It just takes some time for your fingers to get used to it. Autojump is not limited to Zsh, of course.</p>
+
+<h3>My configuration</h3>
+
+<p>My Zsh configuration is nothing special, you can check out part of it here:</p>
+
+<div><script src='https://gist.github.com/3800232.js?file='></script>
+<noscript><pre><code>
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to &quot;random&quot;, it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME=&quot;gurgeh&quot;
+
+# I don't like case sensitive completion
+# CASE_SENSITIVE=&quot;true&quot;
+
+# Comment this out to disable weekly auto-update checks. Oh-my-zsh updates itself.
+DISABLE_AUTO_UPDATE=&quot;true&quot;
+
+# Uncomment following line if you want to disable colors in ls
+# DISABLE_LS_COLORS=&quot;true&quot;
+
+# Uncomment following line if you want to disable autosetting terminal title.
+# DISABLE_AUTO_TITLE=&quot;true&quot;
+
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+COMPLETION_WAITING_DOTS=&quot;true&quot;
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git mercurial autojump command-not-found python pip github gnu-utils history-substring-search)
+
+source $ZSH/oh-my-zsh.sh
+
+# Customize to your needs...
+
+#I don't like this feature. I think no one does. It corrects you, when you are trying to create new files, for example.
+unsetopt correctall 
+
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+export EDITOR=emacs
+
+# And some other sutff here...
+</code></pre></noscript></div>
+
+
+<p>I probably should add some more aliases.</p>
+
+<h3>Miscellaneous tips and tricks</h3>
+
+<p>In Bash, we often use <em>PgUp</em> to search through the command history. In Zsh you just write part of the command and press <em>Up</em>. This will let you cycle through all command lines that contain what you have written, not just those that begins with it. If you don&#8217;t write anything <em>Up</em> works as usual, by cycling through all commands.</p>
+
+<p>Write <em>zsh_stat</em> to get statistics over which commands you use the most. Use <em>jumpstat</em> to get statistics over which paths you use the most.</p>
+
+<p>Well, that&#8217;s it for now. Make the switch now! And browse the resources I have linked to for more tips.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopress and Github as a blogging platform]]></title>
