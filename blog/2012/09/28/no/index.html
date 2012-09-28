@@ -168,7 +168,7 @@
 
 <h3>Good spelling correction</h3>
 
-<p>Zsh does not care if I write a filename in lowercase or mized or whatever. When I try [tab] it will first try to complete on the exact match and then use a case insensitive match. Great! It also has spelling correction built-in in other places, suggesting which command you might have meant, etc. You don&#8217;t want full spelling correction on files though (deactivated per default). That is just annoying.</p>
+<p>Zsh does not care if I write a filename in lowercase or mixed or whatever. When I try [tab] it will first try to complete on the exact match and then use a case insensitive match. Great! It also has spelling correction built-in in other places, suggesting which command you might have meant, etc. You don&#8217;t want full spelling correction on files though (deactivated per default). That is just annoying.</p>
 
 <h3>Global aliases</h3>
 
@@ -197,9 +197,9 @@
 <p><img src="/images/zsh-prompt.png" alt="My Zsh prompt" />
 Note how you can control both the left part and right part of the line. You can also make multi-line prompts, but I like to conserve screen estate.</p>
 
-<p>On the left side I put stuff that are of interest almost all the time. My username, the name of the computer, the last two parts of the directory tree, If I am in a git or hg repository, and if then, which branch (very useful to keep from screwing up) and finally if there are uncomitted code (the X turns in to a neat V when there is nothing to commit).</p>
+<p>On the left side I put stuff that are of interest almost all the time. My username, the name of the computer, the last two parts of the directory tree, If I am in a git or hg repository and which branch (very useful to keep from screwing up) and finally if there are uncomitted code (the X turns in to a neat V when there is nothing to commit).</p>
 
-<p>On the right side, I put the number of jobs running from this terminal, free memory (good reminder on servers) and average CPU load during the last 5 minutes, as reported by <code>uptime</code>. CPU load is expressed as number of CPUs utilized, so to make it meaningful, I also put the number of CPUs in paranthesis after the uptime value. This is also mostly useful if you have many servers with different number of CPUs. If the uptime value exceeds number of CPUs, you know that you have problems. Finally I put a timestamp. Perhaps you think &#8220;How silly, I have a clock on my desktop&#8221;, but the point is not to tell the current time, but that I can scroll back and see when I started a command and how long it took. It keeps a log. Another good thing with keeping colorful stuff on the right side of the prompt is that it makes it easy to scroll through your terminal output and find commands, when your last compile spewed out 200 lines.</p>
+<p>On the right side, I put the number of jobs running from this terminal, free memory (good reminder on servers) and average CPU load during the last 5 minutes, as reported by <code>uptime</code>. CPU load is expressed as number of CPUs utilized, so to make it meaningful, I also put the number of CPUs in paranthesis after the uptime value. This is also mostly useful if you have several servers with different number of CPUs. If the uptime value exceeds number of CPUs, you know that you have problems. Finally I put a timestamp. Perhaps you think &#8220;How silly, I have a clock on my desktop!&#8221;, but the point is not to tell the current time, but that I can scroll back and see when I started a command and how long it took. It keeps a log. Another good thing with keeping colorful stuff on the right side of the prompt is that it makes it easy to scroll through your terminal output and find commands, when your last compile spewed out 200 lines.</p>
 
 <p>Usually the window is much wider than in my screenshot, so you don&#8217;t often run into the right part of the prompt, but if you do, Zsh will magically remove it before you reach it, so it won&#8217;t look cluttered.</p>
 
