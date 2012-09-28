@@ -1,0 +1,117 @@
+---
+layout: post
+title: "No, really. Use Zsh."
+date: 2012-09-28 13:23
+comments: true
+categories: 
+---
+
+[Zsh](http://zsh.sourceforge.net/) is the new hotness. Well newer and hotter than Bash anyway, since the first version of Bash was released in June 1989, while the young and peppy Zsh was released in December 1990. In large parts thanks to the configuration "skin" [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh), Zsh has gained a lot of popularity during the last year or so. I have used it for a few months myself and could not be happier, unless it produced chocolate ice cream ← *note to shell developers*.
+
+This is a guide on why you need it and how you install, configure and use it. Sometimes just with links to the relevant sites.
+
+<!--more-->
+
+This is written partly for my colleagues, who I think would benefit from using Zsh instead of Bash on their desktops and on our servers.
+
+## So what makes Zsh so great?
+
+1. Powerful context based tab completion
+2. Pattern matching/globbing on alien steroids
+3. Themeable prompts
+4. Loadable modules
+5. Good spelling correction
+6. Sharing of command history among all running shells (I like my command line history and all my Konsole tabs)
+7. Global aliases
+
+Though I have used it for 10+ years, I am far from a Bash specialist. Some of these things can be enabled in Bash, but AFAIK it is not implemented quite as well.
+
+### Context based tab completion
+File based tab completion is great and all, but zsh has tab completion for *everything*. It has knowledge about an impressive number of tools and scripts. It knows which commands *git* takes, which hosts are in my hosts file for *ssh*, which users my system have when I write *chmod*, available packages to *apt-get*, etc. Using <tab> when writing commands is a bit like static type checking, since if you don't get a completion you are probably writing your argument type in the wrong place.
+
+For common use cases it is easy to write tab completion specifications for your own scripts.
+
+### Globbing
+Globbing means command line parameter expansion. For example `ls *.html`. Zsh has it's own *globbing language*. You can sort and filter by exclusion or inclusion on name, size, permission, owner, creation time. Everything.
+
+```
+ls *(.)            # list just regular files
+ls *(/)            # list just directories
+ls -ld *(/om[1,3]) # Show three newest directories. "om" orders by modification. "[1,3]" works like Python slice.
+rm -i *(.L0)       # Remove zero length files, prompt for each file
+ls *(^m0)          # Files not modified today.
+emacs **/main.py   # Edit main.py, wherever it is in this directory tree. ** is great.
+ls **/*(.x)        # List all executable files in this tree
+ls *~*.*(.)        # List all files that does not have a dot in the filename
+ls -l */**(Lk+100) # List all files larger than 100kb in this tree
+ls DATA_[0-9](#c4,7).csv # List DATA_nnnn.csv to DATA_nnnnnnn.csv
+```
+
+These examples happily borrowed from [Zzappers Best of ZSH Tips](http://www.rayninfo.co.uk/tips/zshtips.html), [Z shell made easy](http://www.tuxradar.com/content/z-shell-made-easy) and [Zsh-lovers man page](http://grml.org/zsh/zsh-lovers.html). Skim through them all, when you have decided to give Zsh a try.
+
+### Loadable modules
+Loadable modules are modules that give your shell additional functionality. Sort of like importing a library when you code. They can make the filters above even more interesting. For example expressing date constraints in a natural format. There are examples of using modules in the Zsh-lovers man page and full documentation in the [Zsh Modules Documentation](http://www.math.technion.ac.il/Site/computing/docs/zsh/zsh_21.html).
+
+### Good spelling correction
+Zsh does not care if I write a filename in lowercase or mized or whaterver. when I try <tab> it will first try to complete on the exact match and then use a case insensitive match. Great! It also has spelling correction built-in in other places, suggesting which command you might have meant, etc. You don't want full spelling correction on files though (deactivated per default). That is just annoying.
+
+### Global aliases
+Aliases are nice, but global aliases are words that can be used anywhere on the command line, thus you can give certain files, filters or pipes a short name. Some examples:
+
+```
+alias -g L="|less" # Write L after a command to page through the output.
+alias -g TL='| tail -20'
+alias -g NUL="> /dev/null 2>&1" # You get the idea.
+```
+
+If you want to give a directory an alias, you use *hash*. `hash -d projs=~/projects/`
+
+Zsh also has suffix aliases, which means that you can tie a file suffix, let's say "pdf" to a command, for example xpdf. `alias -s pdf=xpdf` Now if you just type the name of a pdf file, it will be displayed with xpdf. Similar to suffix aliases, if you turn on AUTO_CD, typing the name of a directory cd:s to it.
+
+### Installing Zsh
+OK, so now you know that you need to try Zsh out. What do you do? Simple. Head over to [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) and follow the intructions. When installing Zsh, you should customize two things.
+
+#### a) The prompt
+Extravagant prompts have become a badge of pride for Zshellers. It is quite easy to write your own prompt. I have:
+
+![My Zsh prompt](/images/zsh-prompt.png)
+Note how you can control both the left part and right part of the line. You can also make multi-line prompts, but I like to conserve screen estate.
+
+On the left side I put stuff that are of interest almost all the time. My username, the name of the computer, the last two parts of the directory tree, If I am in a git or hg repository, and if then, which branch (very useful to keep from screwing up) and finally if there are uncomitted code (the X turns in to a neat V when there is nothing to commit).
+
+On the right side, I put the number of jobs running from this terminal, free memory (good reminder on servers) and average CPU load during the last 5 minutes, as reported by `uptime`. CPU load is expressed as number of CPUs utilized, so to make it meaningful, I also put the number of CPUs in paranthesis after the uptime value. This is also mostly useful if you have many servers with different number of CPUs. If the uptime value exceeds number of CPUs, you know that you have problems. Finally I put a timestamp. Perhaps you think "How silly, I have a clock on my desktop", but the point is not to tell the current time, but that I can scroll back and see when I started a command and how long it took. It keeps a log. Another good thing with keeping colorful stuff on the right side of the prompt is that it makes it easy to scroll through your terminal output and find commands, when your last compile spewed out 200 lines.
+
+Usually the window is much wider than in my screenshot, so you don't often run into the right part of the prompt, but if you do, Zsh will magically remove it before you reach it, so it won't look cluttered.
+
+This is the code for my prompt:
+
+{% gist 3800072 %}
+
+You can take it or any other from the [theme gallery](https://github.com/robbyrussell/oh-my-zsh/wiki/themes) (you should visit that now, it is full of themes and colorful screenshots of what you can use immediately after installing oh-my-zsh) as a basis if you want to write your own. You can call all the scripts and commands that your heart desire to produce the prompt output.
+
+Currently, my prompt is not part of the oh-my-zsh distribution (I have not made a pull request. Perhaps I should?), so if you want to use it, just download it and copy it to ~/.oh-my-zsh/themes/gurgeh.zsh-theme.
+
+A good prompt really is a great help.
+
+#### And b) the plugins
+
+Oh-my-Zsh has a lot of great plugins. You can read more about them there. I found it easiest to just read through the simple source code of the ones that interested me. These are the ones that I use (from my  ~/.zshrc file):
+
+`plugins=(git mercurial autojump command-not-found python pip github gnu-utils history-substring-search)`
+
+To use autojump on Ubuntu, you need to `sudo apt-get install autojump`. That enables you to just write `j <directory>` and it will jump to the most frequently used directory with that name. A great way to navigate, which naturally can use tab-completion. It just takes some time for your fingers to get used to it. Autojump is not limited to Zsh, of course.
+
+### My configuration
+My Zsh configuration is nothing special, you can check out part of it here:
+
+{% gist 3800232 %}
+
+I probably should add some more aliases.
+
+### Miscellaneous tips and tricks
+
+In Bash, we often use *PgUp* to search through the command history. In Zsh you just write part of the command and press *Up*. This will let you cycle through all command lines that contain what you have written, not just those that begins with it. If you don't write anything *Up* works as usual, by cycling through all commands.
+
+Write *zsh_stat* to get statistics over which commands you use the most. Use *jumpstat* to get statistics over which paths you use the most.
+
+Well, that's it for now. Make the switch now! And browse the resources I have linked to for more tips.
