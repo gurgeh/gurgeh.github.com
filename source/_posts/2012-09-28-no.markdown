@@ -27,7 +27,7 @@ This is written partly for my colleagues, who I think would benefit from using Z
 Though I have used it for 10+ years, I am far from a Bash specialist. Some of these things can be enabled in Bash, but AFAIK it is not implemented quite as well.
 
 ### Context based tab completion
-File based tab completion is great and all, but zsh has tab completion for *everything*. It has knowledge about an impressive number of tools and scripts. It knows which commands *git* takes, which hosts are in my hosts file for *ssh*, which users my system have when I write *chmod*, available packages to *apt-get*, etc. Using <tab> when writing commands is a bit like static type checking, since if you don't get a completion you are probably writing your argument type in the wrong place.
+File based tab completion is great and all, but zsh has tab completion for *everything*. It has knowledge about an impressive number of tools and scripts. It knows which commands *git* takes, which hosts are in my hosts file for *ssh*, which users my system have when I write *chmod*, available packages to *apt-get*, etc. Using [tab] when writing commands is a bit like static type checking, since if you don't get a completion you are probably writing your argument type in the wrong place.
 
 For common use cases it is easy to write tab completion specifications for your own scripts.
 
@@ -53,7 +53,7 @@ These examples happily borrowed from [Zzappers Best of ZSH Tips](http://www.rayn
 Loadable modules are modules that give your shell additional functionality. Sort of like importing a library when you code. They can make the filters above even more interesting. For example expressing date constraints in a natural format. There are examples of using modules in the Zsh-lovers man page and full documentation in the [Zsh Modules Documentation](http://www.math.technion.ac.il/Site/computing/docs/zsh/zsh_21.html).
 
 ### Good spelling correction
-Zsh does not care if I write a filename in lowercase or mized or whaterver. when I try <tab> it will first try to complete on the exact match and then use a case insensitive match. Great! It also has spelling correction built-in in other places, suggesting which command you might have meant, etc. You don't want full spelling correction on files though (deactivated per default). That is just annoying.
+Zsh does not care if I write a filename in lowercase or mixed or whatever. When I try [tab] it will first try to complete on the exact match and then use a case insensitive match. Great! It also has spelling correction built-in in other places, suggesting which command you might have meant, etc. You don't want full spelling correction on files though (deactivated per default). That is just annoying.
 
 ### Global aliases
 Aliases are nice, but global aliases are words that can be used anywhere on the command line, thus you can give certain files, filters or pipes a short name. Some examples:
@@ -77,17 +77,17 @@ Extravagant prompts have become a badge of pride for Zshellers. It is quite easy
 ![My Zsh prompt](/images/zsh-prompt.png)
 Note how you can control both the left part and right part of the line. You can also make multi-line prompts, but I like to conserve screen estate.
 
-On the left side I put stuff that are of interest almost all the time. My username, the name of the computer, the last two parts of the directory tree, If I am in a git or hg repository, and if then, which branch (very useful to keep from screwing up) and finally if there are uncomitted code (the X turns in to a neat V when there is nothing to commit).
+On the left side I put stuff that are of interest almost all the time. My username, the name of the computer, the last two parts of the directory tree, If I am in a git or hg repository and which branch (very useful to keep from screwing up) and finally if there are uncommitted code (the X turns in to a neat V when there is nothing to commit).
 
-On the right side, I put the number of jobs running from this terminal, free memory (good reminder on servers) and average CPU load during the last 5 minutes, as reported by `uptime`. CPU load is expressed as number of CPUs utilized, so to make it meaningful, I also put the number of CPUs in paranthesis after the uptime value. This is also mostly useful if you have many servers with different number of CPUs. If the uptime value exceeds number of CPUs, you know that you have problems. Finally I put a timestamp. Perhaps you think "How silly, I have a clock on my desktop", but the point is not to tell the current time, but that I can scroll back and see when I started a command and how long it took. It keeps a log. Another good thing with keeping colorful stuff on the right side of the prompt is that it makes it easy to scroll through your terminal output and find commands, when your last compile spewed out 200 lines.
+On the right side, I put the number of jobs running from this terminal, free memory (good reminder on servers) and average CPU load during the last 5 minutes, as reported by `uptime`. CPU load is expressed as number of CPUs utilized, so to make it meaningful, I also put the number of CPUs in paranthesis after the uptime value. This is also mostly useful if you have several servers with different number of CPUs. If the uptime value exceeds number of CPUs, you know that you have problems. Finally I put a timestamp. Perhaps you think "How silly, I have a clock on my desktop!", but the point is not to tell the current time, but that I can scroll back and see when I started a command and how long it took. It keeps a log. Another good thing with keeping colorful stuff on the right side of the prompt is that it makes it easy to scroll through your terminal output and find commands, when your last compile spewed out 200 lines.
 
 Usually the window is much wider than in my screenshot, so you don't often run into the right part of the prompt, but if you do, Zsh will magically remove it before you reach it, so it won't look cluttered.
 
-This is the code for my prompt:
+This is the code for my prompt. For some reason Github overrides my syntax highlighting settings when I give the gist a filename, so my gists are unnamed today:
 
 {% gist 3800072 %}
 
-You can take it or any other from the [theme gallery](https://github.com/robbyrussell/oh-my-zsh/wiki/themes) (you should visit that now, it is full of themes and colorful screenshots of what you can use immediately after installing oh-my-zsh) as a basis if you want to write your own. You can call all the scripts and commands that your heart desire to produce the prompt output.
+You can take it or any other from the [theme gallery](https://github.com/robbyrussell/oh-my-zsh/wiki/themes) (you should visit that now, it is full of themes and colorful screenshots of what you can use immediately after installing oh-my-zsh) as a base if you want to write your own. You can call all the scripts and commands that your heart desire to produce the prompt output.
 
 Currently, my prompt is not part of the oh-my-zsh distribution (I have not made a pull request. Perhaps I should?), so if you want to use it, just download it and copy it to ~/.oh-my-zsh/themes/gurgeh.zsh-theme.
 
@@ -99,7 +99,7 @@ Oh-my-Zsh has a lot of great plugins. You can read more about them there. I foun
 
 `plugins=(git mercurial autojump command-not-found python pip github gnu-utils history-substring-search)`
 
-To use autojump on Ubuntu, you need to `sudo apt-get install autojump`. That enables you to just write `j <directory>` and it will jump to the most frequently used directory with that name. A great way to navigate, which naturally can use tab-completion. It just takes some time for your fingers to get used to it. Autojump is not limited to Zsh, of course.
+To use autojump on Ubuntu, you need to `sudo apt-get install autojump`. That enables you to just write `j [directory]` and it will jump to the most frequently used directory with that name. A great way to navigate, which naturally can use tab-completion. It just takes some time for your fingers to get used to it. Autojump is not limited to Zsh, of course.
 
 ### My configuration
 My Zsh configuration is nothing special, you can check out part of it here:
