@@ -4,7 +4,7 @@
   <title><![CDATA[IFHO]]></title>
   <link href="http://gurgeh.github.com/atom.xml" rel="self"/>
   <link href="http://gurgeh.github.com/"/>
-  <updated>2012-09-28T17:09:16+02:00</updated>
+  <updated>2012-10-31T14:56:42+01:00</updated>
   <id>http://gurgeh.github.com/</id>
   <author>
     <name><![CDATA[David Fendrich]]></name>
@@ -12,6 +12,152 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[C++11 and Boost - succinct like Python]]></title>
+    <link href="http://gurgeh.github.com/blog/2012/10/31/c-plus-plus-11-and-boost-succinct-like-python/"/>
+    <updated>2012-10-31T13:05:00+01:00</updated>
+    <id>http://gurgeh.github.com/blog/2012/10/31/c-plus-plus-11-and-boost-succinct-like-python</id>
+    <content type="html"><![CDATA[<p>C++11 is the new standard of C++ that was released last year. Yes, I know that is now 2012, but compilers are just now starting to catch up and implement everything, though AFAIK there is not yet a fully compliant compiler.</p>
+
+<p>With a combination of C++11 and the <a href="http://www.boost.org/">Boost</a> library, I think that it is possible to write code in a style that is almost as painless as in a modern dynamic language like Python. I also think that is not so well known how much C++ has changed for the better, outside the C++-community. Hence this post.</p>
+
+<p>As an example, I have taken the first interesting excercise from <a href="http://www.diveintopython.net/toc/index.html">Dive into Python</a>, <a href="http://www.diveintopython.net/object_oriented_framework/index.html">fileinfo.py</a>, and converted it to C++, trying to remain as faithful as possible to the original code.</p>
+
+<!--more-->
+
+
+<p><code>fileinfo.py</code> implements a simple MP3-metadata printer, which is built so that it will be easy to add other metadata printers in the future. For the Python code, see the previous link and for my commented C++ code see here:</p>
+
+<div><script src='https://gist.github.com/3871749.js?file='></script>
+<noscript><pre><code>//Having to include so many different header files to do basic things like open a file, use strings, vectors and tuples, etc, is still annoying.
+#include &lt;fstream&gt;
+#include &lt;vector&gt;
+#include &lt;map&gt;
+#include &lt;tuple&gt;
+#include &lt;string&gt;
+
+//To use C++11 lambdas with Boost lambdas we define this. Warning, bugs in Boost &lt; 1.51 and with compilers that are not standard compliant. Gcc 4.7+ should work. In Boost 1.52 and later we may not need the define at all.
+#define BOOST_RESULT_OF_USE_DECLTYPE
+
+#include &lt;boost/format.hpp&gt; // String formating
+#include &lt;boost/algorithm/string.hpp&gt; // Join list of strings
+#include &lt;boost/filesystem.hpp&gt; // Iterate over files and directories
+#include &lt;boost/range/adaptors.hpp&gt; // Adaptors!
+#include &lt;boost/range/algorithm/copy.hpp&gt; // We just need one algorithm
+
+//Like from ... import * in Python. Beware namespace collisions. Don't open namespaces directly in a header file.
+using namespace std;
+using namespace boost::filesystem;
+using namespace boost::adaptors;
+
+typedef map&lt;string, string&gt; propMap; // Modelling mp3 metadata String Key/Val
+typedef map&lt;path, function&lt;propMap(string)&gt;&gt; extLookup; // Extension to FileInfo functor
+
+const int kTailSize = 128; // Size of Mp3 metadata section. Located at the end of the file.
+
+string stripnulls(string s){
+  using namespace boost::algorithm; // Example of local &quot;using&quot;
+  erase_all(s, &quot;\0&quot;); //Remove the null bytes
+  trim(s); //Trim whitespace in both ends of the string
+  return s;
+}
+
+string ord(string s){
+  int i = static_cast&lt;unsigned char&gt;(s[0]); //Chars are signed by default, so we need a cast to treat them as unsigned, like the Python code
+  return (boost::format(&quot;%1%&quot;) % i).str(); //Boost format is a type safe version of sprintf, which also avoids the problem with preallocating a buffer
+}
+
+//In C++11, passing functions around is much easier. Everything that behaves like a function from string to string can be stored in a function&lt;string(string)&gt;, including functors (objects with overloaded call semantics)
+typedef function&lt;string(string)&gt; StrToStr;
+
+//In the olden days we could not initialize a map inline like this
+//Key -&gt; metadata mapping. Unfortunately tuples cannot be {}-initialized nested.
+const map&lt;const string, const tuple&lt;int, int, StrToStr&gt;&gt; TagDataMap {
+  {&quot;title&quot;   , make_tuple( 3,   30, stripnulls)},
+  {&quot;artist&quot;  , make_tuple( 33,  30, stripnulls)},
+  {&quot;album&quot;   , make_tuple( 63,  30, stripnulls)},
+  {&quot;year&quot;    , make_tuple( 93,   4, stripnulls)},
+  {&quot;comment&quot; , make_tuple( 97,  29, stripnulls)},
+  {&quot;genre&quot;   , make_tuple(127,   1, ord)}};
+
+propMap Mp3FileInfo(string p){
+  propMap ret {{&quot;name&quot;, p}};
+
+  ifstream f(p, ios::binary);
+  if(f.fail()) return ret;
+
+  string sbuf;
+  sbuf.resize(kTailSize);
+  f.seekg(-kTailSize, ios::end);
+  f.read(&amp;sbuf[0], kTailSize);
+
+  if(sbuf.substr(0,3) != &quot;TAG&quot;) return ret;
+
+  int start, length;
+  StrToStr mapfun;
+  //for loops over collections are finally convenient to use.
+  for(auto td : TagDataMap){
+    tie (start, length, mapfun) = td.second; // &quot;tie&quot; is tuple deconstruction and assignment, just like in Python
+    ret[td.first] = mapfun(sbuf.substr(start, length));
+  }
+
+  return ret;
+}
+
+vector&lt;propMap&gt; listDirectory(string directory, extLookup exts){
+  directory_iterator startd(directory), endd;
+  auto files = make_iterator_range(startd, endd);
+  vector&lt;propMap&gt; retmap;
+  
+  for(path p : files){
+    auto x = exts.find(p.extension());
+    if(x != exts.end()){
+      retmap.push_back(x-&gt;second(p.string()));
+    }
+  }
+  /*
+  I actually think that for loops are too general, and should be used as seldom as possible. Range algorithms like filter and transform tell the reader (and compiler) exactly what I am doing to my data and leaves less room for bugs and misinterpretation. I know this is heresy to many C++-ers, though.
+The following is how the above for loop would look in a functional list-comprehension style, featuring Boost's range algorithms and the new C++11 lambda expression.
+
+  boost::copy(files | filtered([exts](path p){return exts.count(p.extension());}) 
+                    | transformed([exts](path p){return exts.find(p.extension())-&gt;second(p.string());}),
+                    back_inserter(retmap));
+
+I decided not to go with this anyway, since in this case the original for loop is so succinct.
+*/
+
+  return retmap;
+}
+
+int main(int argc, char* argv[]){
+  //A map from file extension to function, replacing the brittle Python introspection method
+  extLookup exts = {{&quot;.mp3&quot;, Mp3FileInfo}};
+  //Get a property map for each file in the given directory
+  for(propMap pm: listDirectory(argv[1], exts)){
+    //&quot;join&quot; is like join in Python and &quot;pm | transformed&quot; pipes the property map through a mapping function that makes strings from the properties.
+    cout &lt;&lt; join(pm | transformed([](propMap::value_type pv){
+          return (boost::format(&quot;%1%=%2%&quot;) % pv.first % pv.second).str();
+        }), &quot;\n&quot;);
+    cout &lt;&lt; &quot;\n\n&quot;;
+  }
+}
+</code></pre></noscript></div>
+
+
+<p>If you remove my gratuitous commenting and the includes, you will notice that it is more or less as succinct as the Python code.</p>
+
+<p>Perhaps more importantly, it is also as safe. No pointers to point at bad places and leak memory and no buffers to overflow. There is much more to why modern C++ is more safe and less memory leaky than it once was, besides the added emphasis on a more functional style, for example raw pointers are actively discouraged (use smart pointers instead) and arrays (not vectors!) are now finally in the standard library, so we use array&lt;int, 10> instead of int array[10].</p>
+
+<p>This program is actually the basis of a presentation I gave at work, which had more explanations on the features used. It only touches the surface on what you can do with C++11 You can read more about the new features in C++11 in <a href="http://blog.smartbear.com/software-quality/bid/167271/The-Biggest-Changes-in-C-11-and-Why-You-Should-Care">the biggest changes in C++11 and why you should care</a> and of course on <a href="http://en.wikipedia.org/wiki/C%2B%2B11">Wikipedia</a>.</p>
+
+<p>Herb Sutter, who is chair of the ISO C++ standards committee and thus perhaps not completely unbiased, had this to say on the relase of C++11:</p>
+
+<blockquote><p>Now with C++11&#8217;s improvements that incorporate many of the best features of managed languages, modern C++ code is as clean and safe as code written other modern languages, as well as fast, with performance by default and full access to the underlying system whenever you need it.</p></blockquote>
+
+<p>I think it is almost there. For example, the language is still too large, so in a new project you have to have a good code standard, that decides well on which parts should be used and how. The standard library, even including Boost, is still a bit weak in some areas, like downloading an URL. Also the lack of a proper package manager, like pip/PyPi, hurts.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[No, really. Use Zsh.]]></title>
@@ -111,7 +257,7 @@
 <p><img src="http://gurgeh.github.com/images/zsh-prompt.png" alt="My Zsh prompt" />
 Note how you can control both the left part and right part of the line. You can also make multi-line prompts, but I like to conserve screen estate.</p>
 
-<p>On the left side I put stuff that are of interest almost all the time. My username, the name of the computer, the last two parts of the directory tree, If I am in a git or hg repository and which branch (very useful to keep from screwing up) and finally if there are uncomitted code (the X turns in to a neat V when there is nothing to commit).</p>
+<p>On the left side I put stuff that are of interest almost all the time. My username, the name of the computer, the last two parts of the directory tree, If I am in a git or hg repository and which branch (very useful to keep from screwing up) and finally if there are uncommitted code (the X turns in to a neat V when there is nothing to commit).</p>
 
 <p>On the right side, I put the number of jobs running from this terminal, free memory (good reminder on servers) and average CPU load during the last 5 minutes, as reported by <code>uptime</code>. CPU load is expressed as number of CPUs utilized, so to make it meaningful, I also put the number of CPUs in paranthesis after the uptime value. This is also mostly useful if you have several servers with different number of CPUs. If the uptime value exceeds number of CPUs, you know that you have problems. Finally I put a timestamp. Perhaps you think &#8220;How silly, I have a clock on my desktop!&#8221;, but the point is not to tell the current time, but that I can scroll back and see when I started a command and how long it took. It keeps a log. Another good thing with keeping colorful stuff on the right side of the prompt is that it makes it easy to scroll through your terminal output and find commands, when your last compile spewed out 200 lines.</p>
 
@@ -162,7 +308,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN=&quot;%{$fg[blue]%})&quot;
 </code></pre></noscript></div>
 
 
-<p>You can take it or any other from the <a href="https://github.com/robbyrussell/oh-my-zsh/wiki/themes">theme gallery</a> (you should visit that now, it is full of themes and colorful screenshots of what you can use immediately after installing oh-my-zsh) as a basis if you want to write your own. You can call all the scripts and commands that your heart desire to produce the prompt output.</p>
+<p>You can take it or any other from the <a href="https://github.com/robbyrussell/oh-my-zsh/wiki/themes">theme gallery</a> (you should visit that now, it is full of themes and colorful screenshots of what you can use immediately after installing oh-my-zsh) as a base if you want to write your own. You can call all the scripts and commands that your heart desire to produce the prompt output.</p>
 
 <p>Currently, my prompt is not part of the oh-my-zsh distribution (I have not made a pull request. Perhaps I should?), so if you want to use it, just download it and copy it to ~/.oh-my-zsh/themes/gurgeh.zsh-theme.</p>
 

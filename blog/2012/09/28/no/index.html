@@ -197,7 +197,7 @@
 <p><img src="/images/zsh-prompt.png" alt="My Zsh prompt" />
 Note how you can control both the left part and right part of the line. You can also make multi-line prompts, but I like to conserve screen estate.</p>
 
-<p>On the left side I put stuff that are of interest almost all the time. My username, the name of the computer, the last two parts of the directory tree, If I am in a git or hg repository and which branch (very useful to keep from screwing up) and finally if there are uncomitted code (the X turns in to a neat V when there is nothing to commit).</p>
+<p>On the left side I put stuff that are of interest almost all the time. My username, the name of the computer, the last two parts of the directory tree, If I am in a git or hg repository and which branch (very useful to keep from screwing up) and finally if there are uncommitted code (the X turns in to a neat V when there is nothing to commit).</p>
 
 <p>On the right side, I put the number of jobs running from this terminal, free memory (good reminder on servers) and average CPU load during the last 5 minutes, as reported by <code>uptime</code>. CPU load is expressed as number of CPUs utilized, so to make it meaningful, I also put the number of CPUs in paranthesis after the uptime value. This is also mostly useful if you have several servers with different number of CPUs. If the uptime value exceeds number of CPUs, you know that you have problems. Finally I put a timestamp. Perhaps you think &#8220;How silly, I have a clock on my desktop!&#8221;, but the point is not to tell the current time, but that I can scroll back and see when I started a command and how long it took. It keeps a log. Another good thing with keeping colorful stuff on the right side of the prompt is that it makes it easy to scroll through your terminal output and find commands, when your last compile spewed out 200 lines.</p>
 
@@ -248,7 +248,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN=&quot;%{$fg[blue]%})&quot;
 </code></pre></noscript></div>
 
 
-<p>You can take it or any other from the <a href="https://github.com/robbyrussell/oh-my-zsh/wiki/themes">theme gallery</a> (you should visit that now, it is full of themes and colorful screenshots of what you can use immediately after installing oh-my-zsh) as a basis if you want to write your own. You can call all the scripts and commands that your heart desire to produce the prompt output.</p>
+<p>You can take it or any other from the <a href="https://github.com/robbyrussell/oh-my-zsh/wiki/themes">theme gallery</a> (you should visit that now, it is full of themes and colorful screenshots of what you can use immediately after installing oh-my-zsh) as a base if you want to write your own. You can call all the scripts and commands that your heart desire to produce the prompt output.</p>
 
 <p>Currently, my prompt is not part of the oh-my-zsh distribution (I have not made a pull request. Perhaps I should?), so if you want to use it, just download it and copy it to ~/.oh-my-zsh/themes/gurgeh.zsh-theme.</p>
 
@@ -362,6 +362,8 @@ export EDITOR=emacs
         <a class="basic-alignment left articlenav" href="/blog/2012/09/27/octopress-and-github-as-blogging-platform/" title="Previous Post: Octopress and Github as a blogging platform">&laquo; Octopress and Github as a blogging platform</a>
       
       
+        <a class="basic-alignment right articlenav" href="/blog/2012/10/31/c-plus-plus-11-and-boost-succinct-like-python/" title="Next Post: C++11 and Boost - succinct like Python">C++11 and Boost - succinct like Python &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -381,6 +383,10 @@ export EDITOR=emacs
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/10/31/c-plus-plus-11-and-boost-succinct-like-python/">C++11 and Boost - succinct like Python</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/09/28/no/">No, really. Use Zsh.</a>
       </li>
     
@@ -394,10 +400,6 @@ export EDITOR=emacs
     
       <li class="post">
         <a href="/blog/2010/12/28/compression-prediction-and-artificial/">Compression, prediction and artificial intelligence</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2010/08/27/rescuing-hosed-system-using-only-bash/">Rescuing a hosed system using only Bash</a>
       </li>
     
   </ul>
