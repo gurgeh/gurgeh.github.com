@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: lablog | IFHO]]></title>
-  <link href="http://gurgeh.github.com/blog/categories/lablog/atom.xml" rel="self"/>
-  <link href="http://gurgeh.github.com/"/>
-  <updated>2012-10-31T14:56:42+01:00</updated>
-  <id>http://gurgeh.github.com/</id>
+  <link href="http://fendrich.se/blog/categories/lablog/atom.xml" rel="self"/>
+  <link href="http://fendrich.se/"/>
+  <updated>2012-11-23T11:45:23+01:00</updated>
+  <id>http://fendrich.se/</id>
   <author>
     <name><![CDATA[David Fendrich]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[12:50, press Return]]></title>
-    <link href="http://gurgeh.github.com/blog/2007/09/05/1250-press-return/"/>
+    <link href="http://fendrich.se/blog/2007/09/05/1250-press-return/"/>
     <updated>2007-09-05T00:00:00+02:00</updated>
-    <id>http://gurgeh.github.com/blog/2007/09/05/1250-press-return</id>
+    <id>http://fendrich.se/blog/2007/09/05/1250-press-return</id>
     <content type="html"><![CDATA[<div class='post'>
 The deed is done.<br /><br />I and my friend Nils made a "sprint" last night, where we finished the first version of our seed AI.<br /><br />First we made a simple IQ-function that tests how well a program (a Program Generator or <span style="font-style: italic;">PG</span>) can generate new programs (<span style="font-style: italic;">leaves</span>) from feedback of how close a leaf is to what we want.<br /><br />A PG that receives the best IQ so far gets a chance to generate new PG's, in effect it becomes a Program Generator Generator. We call this state a <span style="font-style: italic;">Challenger</span>. When a Challenger generates a new PG with the best IQ so far, it has verified that not only does it have good IQ, but it can produce other programs with good IQ, and is thus promoted to the status of <span style="font-style: italic;">Master </span>(and the smart PG gets to be Challenger).<span style="font-style: italic;"><br /></span><br />The programs are generated and run in a circular buffer under a virtual machine, where all sequences of integers are valid programs and no operators can throw exceptions. Such a VM is much slower than machine code, but the process gets faster than if it were running on bare bones x86, because on an x86 (or other architecture) most bytes are meaningless and will throw exceptions, which are slow to process. A PG that is good enough (for example a human) to understand how to write code without generating (many) exceptions, would theoretically run faster on x86, but our current primitive PGs will benefit from a virtual environment.<span style="font-style: italic;"><br /><br /></span>Anyway, we wrote the code, pressed Enter (the title is a reference to the nice movie Pi), and voíla, our random generating seed started finding more intelligent programs than itself - Challengers. After a while, Nils calls it 15 seconds, a Challenger managed to become Master and after a longer while the Master produced a Challenger that later became the third generation Master. Spectacular!<br /><br />Now we just need a better IQ test and a way to inspect the generated programs! Well, we also need tons and tons of hardware. This is the sort of task that could happily use up Google's entire computer armada for a year and still benefit from more. Hmm.. perhaps if I ask them nicely..</div>
 

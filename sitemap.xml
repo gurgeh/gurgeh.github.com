@@ -1,91 +1,91 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://gurgeh.github.com/blog/2007/08/30/seed-ai/</loc>
+        <loc>http://fendrich.se/blog/2007/08/30/seed-ai/</loc>
         <lastmod>2012-09-27T17:35:18+02:00</lastmod>
     </url>
     <url>
-        <loc>http://gurgeh.github.com/blog/2007/09/05/1250-press-return/</loc>
+        <loc>http://fendrich.se/blog/2007/09/05/1250-press-return/</loc>
         <lastmod>2012-09-27T17:35:18+02:00</lastmod>
     </url>
     <url>
-        <loc>http://gurgeh.github.com/blog/2007/09/06/coincidence/</loc>
+        <loc>http://fendrich.se/blog/2007/09/06/coincidence/</loc>
         <lastmod>2012-09-27T17:35:18+02:00</lastmod>
     </url>
     <url>
-        <loc>http://gurgeh.github.com/blog/2007/09/07/optimal-iq-test/</loc>
+        <loc>http://fendrich.se/blog/2007/09/07/optimal-iq-test/</loc>
         <lastmod>2012-09-27T17:35:18+02:00</lastmod>
     </url>
     <url>
-        <loc>http://gurgeh.github.com/blog/2007/12/12/deceptively-simple-game/</loc>
+        <loc>http://fendrich.se/blog/2007/12/12/deceptively-simple-game/</loc>
         <lastmod>2012-09-27T17:35:18+02:00</lastmod>
     </url>
     <url>
-        <loc>http://gurgeh.github.com/blog/2007/12/21/why-planning-is-hard/</loc>
+        <loc>http://fendrich.se/blog/2007/12/21/why-planning-is-hard/</loc>
         <lastmod>2012-09-27T17:35:18+02:00</lastmod>
     </url>
     <url>
-        <loc>http://gurgeh.github.com/blog/2010/04/14/confident-optimization-using-gates/</loc>
+        <loc>http://fendrich.se/blog/2010/04/14/confident-optimization-using-gates/</loc>
         <lastmod>2012-09-27T17:35:18+02:00</lastmod>
     </url>
     <url>
-        <loc>http://gurgeh.github.com/blog/2010/04/27/gates-in-practice/</loc>
+        <loc>http://fendrich.se/blog/2010/04/27/gates-in-practice/</loc>
         <lastmod>2012-09-27T17:35:18+02:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://gurgeh.github.com/blog/2010/05/05/solving-sudoku-with-genetic-algorithms/
-        </loc>
+        <loc>http://fendrich.se/blog/2010/05/05/solving-sudoku-with-genetic-algorithms/</loc>
         <lastmod>2012-09-27T17:35:18+02:00</lastmod>
     </url>
     <url>
-        <loc>http://gurgeh.github.com/blog/2010/06/16/digital-immortality-true-ai-and/</loc>
+        <loc>http://fendrich.se/blog/2010/06/16/digital-immortality-true-ai-and/</loc>
         <lastmod>2012-09-27T17:35:18+02:00</lastmod>
     </url>
     <url>
-        <loc>http://gurgeh.github.com/blog/2010/08/19/milliblogging-essae-in-7-tweets/</loc>
+        <loc>http://fendrich.se/blog/2010/08/19/milliblogging-essae-in-7-tweets/</loc>
         <lastmod>2012-09-27T17:35:18+02:00</lastmod>
     </url>
     <url>
-        <loc>http://gurgeh.github.com/blog/2010/08/27/rescuing-hosed-system-using-only-bash/</loc>
+        <loc>http://fendrich.se/blog/2010/08/27/rescuing-hosed-system-using-only-bash/</loc>
         <lastmod>2012-09-27T17:35:18+02:00</lastmod>
     </url>
     <url>
-        <loc>http://gurgeh.github.com/blog/2010/12/28/compression-prediction-and-artificial/</loc>
+        <loc>http://fendrich.se/blog/2010/12/28/compression-prediction-and-artificial/</loc>
         <lastmod>2012-09-27T17:35:18+02:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://gurgeh.github.com/blog/2011/11/10/guerilla-my-attempt-to-build-strong-ai/
-        </loc>
+        <loc>http://fendrich.se/blog/2011/11/10/guerilla-my-attempt-to-build-strong-ai/</loc>
         <lastmod>2012-09-27T17:35:18+02:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://gurgeh.github.com/blog/2012/09/27/octopress-and-github-as-blogging-platform/
-        </loc>
+        <loc>http://fendrich.se/blog/2012/09/27/octopress-and-github-as-blogging-platform/</loc>
         <lastmod>2012-09-27T18:20:54+02:00</lastmod>
     </url>
     <url>
-        <loc>http://gurgeh.github.com/blog/2012/09/28/no/</loc>
+        <loc>http://fendrich.se/blog/2012/09/28/no/</loc>
         <lastmod>2012-09-28T17:29:29+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://gurgeh.github.com/blog/2012/10/31/c-plus-plus-11-and-boost-succinct-like-python/
+            http://fendrich.se/blog/2012/10/31/c-plus-plus-11-and-boost-succinct-like-python/
         </loc>
         <lastmod>2012-10-31T14:56:41+01:00</lastmod>
     </url>
     <url>
-        <loc>http://gurgeh.github.com/404.html</loc>
+        <loc>
+            http://fendrich.se/blog/2012/11/22/compile-time-loops-in-c-plus-plus-11-with-trampolines-and-exponential-recursion/
+        </loc>
+        <lastmod>2012-11-23T11:41:48+01:00</lastmod>
+    </url>
+    <url>
+        <loc>http://fendrich.se/404.html</loc>
         <lastmod>2012-09-27T17:35:18+02:00</lastmod>
     </url>
     <url>
-        <loc>http://gurgeh.github.com/</loc>
-        <lastmod>2012-10-31T14:56:41+01:00</lastmod>
+        <loc>http://fendrich.se/</loc>
+        <lastmod>2012-11-23T11:41:48+01:00</lastmod>
     </url>
     <url>
-        <loc>http://gurgeh.github.com/blog/archives/</loc>
-        <lastmod>2012-10-31T14:56:41+01:00</lastmod>
+        <loc>http://fendrich.se/blog/archives/</loc>
+        <lastmod>2012-11-23T11:41:48+01:00</lastmod>
     </url>
 </urlset>

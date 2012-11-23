@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: hodgepodge | IFHO]]></title>
-  <link href="http://gurgeh.github.com/blog/categories/hodgepodge/atom.xml" rel="self"/>
-  <link href="http://gurgeh.github.com/"/>
-  <updated>2012-10-31T14:56:42+01:00</updated>
-  <id>http://gurgeh.github.com/</id>
+  <link href="http://fendrich.se/blog/categories/hodgepodge/atom.xml" rel="self"/>
+  <link href="http://fendrich.se/"/>
+  <updated>2012-11-23T11:45:23+01:00</updated>
+  <id>http://fendrich.se/</id>
   <author>
     <name><![CDATA[David Fendrich]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Digital immortality, true AI and the destruction of mankind]]></title>
-    <link href="http://gurgeh.github.com/blog/2010/06/16/digital-immortality-true-ai-and/"/>
+    <link href="http://fendrich.se/blog/2010/06/16/digital-immortality-true-ai-and/"/>
     <updated>2010-06-16T00:00:00+02:00</updated>
-    <id>http://gurgeh.github.com/blog/2010/06/16/digital-immortality-true-ai-and</id>
+    <id>http://fendrich.se/blog/2010/06/16/digital-immortality-true-ai-and</id>
     <content type="html"><![CDATA[<div class='post'>
 Around the world a few people and companies are working towards the goal of <a href="http://en.wikipedia.org/wiki/Artificial_general_intelligence">strong AI</a>&nbsp;or artificial general intelligence, which is more or less the same thing. Too few, if you ask me.<br /><br />Today I was reminded of a strategy towards AGI that I have sometimes dreamed of. It is not the strategy I believe most in, but I think it is interesting nonetheless.<br /><br />What if you (assuming you are a competent programmer), from now on, tried to automate as many of your computer tasks as possible. Instead of doing something, try making the computer do it. Even if it takes you ten or a hundred times as long, your time investment will hopefully pay dividends in the future. Starting out, many things will be out of reach, but you will slowly build a knowledge base and an algorithm base that can mimic your preferences and skills. this will enable you to take on harder tasks and so on. You are building a digital assistant from the ground up.<br /><br />Maybe this undertaking is too ambitious for one person, especially if they actually wanted to get something done besides building a digital assistant. In that case, my proposal stands, but instead use a small team (Google and Microsoft, I know you have a few talented guys to spare for a grand project) that tries to automate the computer tasks of one guy.<br /><br />Take email, for example. Propose automatic actions on incoming mail, including replies, forwards and adding stuff to the calendar. Initially, very few emails will be understandable, but gradually I expect the algorithm to get better at parsing language and to get a better model of the user and the world. Perhaps one part of the knowledge base is building a <a href="http://en.wikipedia.org/wiki/Bayesian_network">Bayesian network</a>&nbsp;that models the user's preferences. The important thing is: solve the emails one at a time, using as general rules as you can get away with, but as specialized rules as you practically have to.<br /><br />Want to look something up on Wikipedia? Make travel plans online? Make a purchasing decision? Solve it in code, as general as you can. When the AI is further advanced, you start to write documents and code collaboratively, and so forth. One way of developing the AI is to let it observe your digital life and all your actions. Ultimately, what you end up with is a digital model of yourself, that gets more and more like the original. It answers mail, reads news and maybe comments on it in tweets and blogs. In effect, you achieve digital immortality.<br /><br />Obviously, the weakness here is that I have not proposed what algorithms should be used for this digital alter ego. I do, however, feel that the task of general AI will benefit from both clever general algorithms and clever specialized algorithms and specialized knowledge. An organic hodge-podge of hacks and patches, very much like the brain itself.<br /><br />When a mathematician approaches the problem of AGI, they want a clean solution. One algorithm to bind them all, like the <a href="http://www.idsia.ch/~juergen/goedelmachine.html">Gödel Machine</a>&nbsp;of&nbsp;<a href="http://www.idsia.ch/~juergen/">Jürgen Schmidhuber</a>&nbsp;and <a href="http://www.hutter1.net/">Marcus Hutter</a>. When engineers approach the same problem, they tend to engineer grand designs, like <a href="http://en.wikipedia.org/wiki/Ben_Goertzel">Ben Goertzel</a>'s <a href="http://novamente.net/">Novamente</a>&nbsp;and <a href="http://www.opencog.org/wiki/The_Open_Cognition_Project">OpenCog</a>. I can certainly see the charm of both approaches and I hope that they succeed, but maybe the most practical way forward is just to tackle one small real-world task at a time - the "guided hodge-podge" approach.<br /><br />About the destruction of mankind? No, I don't think we will have any of that, but some smart people do. Like Michael Anissimov: <a href="http://www.acceleratingfuture.com/michael/blog/2007/04/why-is-ai-dangerous/">"Why is AI dangerous?"</a>. Still, a title is better when it involves destruction, don't you think?</div>
 
