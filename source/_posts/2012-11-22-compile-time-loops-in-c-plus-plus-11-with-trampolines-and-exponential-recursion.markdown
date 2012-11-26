@@ -43,7 +43,7 @@ Simple recursion is not a problem:
 
 ``` c++ Simple constexpr recursion - check primality
 constexpr bool isprime(unsigned long n){
-  return n == 2 or n == 3 and (n % 2 and rec_isprime(n, 3));
+  return n == 2 or n == 3 or (n % 2 and rec_isprime(n, 3));
 }
 
 constexpr bool rec_isprime(unsigned long n, unsigned long div){
