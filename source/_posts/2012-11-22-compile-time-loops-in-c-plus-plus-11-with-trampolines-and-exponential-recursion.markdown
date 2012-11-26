@@ -43,7 +43,7 @@ Simple recursion is not a problem:
 
 ``` c++ Simple constexpr recursion - check primality
 constexpr bool isprime(unsigned long n){
-  return n == 2 or (n % 2 and rec_isprime(n, 3));
+  return n == 2 or n == 3 and (n % 2 and rec_isprime(n, 3));
 }
 
 constexpr bool rec_isprime(unsigned long n, unsigned long div){
@@ -161,8 +161,8 @@ struct Prime{
   explicit constexpr Prime(unsigned long n, unsigned long div)
   : n_(n)
   , div_(div)
-  , done_(n % 2 == 0)
-  , retval_(n == 2)
+  , done_(n % 2 == 0 or n == 3)
+  , retval_(n == 2 or n == 3)
   {}
 
   explicit constexpr Prime(bool retval)
