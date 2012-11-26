@@ -4,7 +4,7 @@
   <title><![CDATA[IFHO]]></title>
   <link href="http://fendrich.se/atom.xml" rel="self"/>
   <link href="http://fendrich.se/"/>
-  <updated>2012-11-26T14:45:04+01:00</updated>
+  <updated>2012-11-26T14:47:28+01:00</updated>
   <id>http://fendrich.se/</id>
   <author>
     <name><![CDATA[David Fendrich]]></name>
@@ -73,7 +73,7 @@ of, which can be important. 2) The syntax is much nicer.</p>
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
 </pre></td><td class='code'><pre><code class='c++'><span class='line'><span class="n">constexpr</span> <span class="kt">bool</span> <span class="n">isprime</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">n</span><span class="p">){</span>
-</span><span class='line'>  <span class="k">return</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span> <span class="n">or</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">3</span> <span class="n">and</span> <span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="n">and</span> <span class="n">rec_isprime</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span> <span class="n">or</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">3</span> <span class="n">or</span> <span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="n">and</span> <span class="n">rec_isprime</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">constexpr</span> <span class="kt">bool</span> <span class="n">rec_isprime</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">n</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">div</span><span class="p">){</span>
