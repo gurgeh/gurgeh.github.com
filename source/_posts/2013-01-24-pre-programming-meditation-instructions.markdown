@@ -78,3 +78,9 @@ There are many builtin examples, but I have posted a file that Gnaural can read,
 
 So, in conclusion, don't put it off. Take 15 minutes and try it right now.
 
+http://www.lef.org/news/LefDailyNews.htm?NewsID=12407&Section=Disease
+http://www.kurzweilai.net/meditation-may-change-brains-physical-structure-strengthen-connections
+http://www.kurzweilai.net/demystifying-meditation-brain-imaging-illustrates-how-meditation-reduces-pain
+http://philosophistry.com/archives/2011/02/benefits-of-meditation.html
+http://www.kurzweilai.net/mindfulness-meditation-training-changes-brain-structure-in-8-weeks
+http://www.scientificamerican.com/podcast/episode.cfm?id=mediation-correlated-with-structura-11-01-22
