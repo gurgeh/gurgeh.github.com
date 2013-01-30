@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Pre-programming Mental Silence Meditation"
+title: "Pre-programming Mental Silence Meditation with Entrainment"
 date: 2013-01-24 16:01
 comments: true
 categories: 
@@ -14,9 +14,9 @@ It feels good, helps me relax and it makes my mind feel clear, perceptive and sh
 
 ## Why
 
-In the 60s and 70s all sorts of fantastical and simply untrue claims were made about meditation. Unfortunately that can make people zone out when they read about recent research of higher quality that shows many real effects. See for example (this Wikipedia page on meditation research)[http://en.wikipedia.org/wiki/Research_on_meditation].
+In the 60s and 70s all sorts of fantastical and simply untrue claims were made about meditation. Unfortunately that can make people zone out when they read about recent research of higher quality that shows many real effects. See for example [this Wikipedia page on meditation research](http://en.wikipedia.org/wiki/Research_on_meditation).
 
-Meditation has, among other things, been shown to increase happiness and well-being and (physically change structures)[http://www.kurzweilai.net/mindfulness-meditation-training-changes-brain-structure-in-8-weeks] in the brain related to those things. It improves short-term memory. It may decrease blood pressure and risk of heart attack.
+Meditation has, among other things, been shown to increase happiness and well-being and [physically change structures](http://www.kurzweilai.net/mindfulness-meditation-training-changes-brain-structure-in-8-weeks) in [the brain](http://www.kurzweilai.net/meditation-may-change-brains-physical-structure-strengthen-connections) related to those things. It improves short-term memory. It may decrease blood pressure and risk of heart attack.
 
 But you don't actually have to care about any of those things. The effects after a 15 (or possibly 10 if you're really in a hurry) minute "successful" meditation are so obvious that you should be able to evaluate if it is worth it to you, on that alone. Many do longer than 15 minutes. 30 minutes or more is not unusual. But perhaps you have a busy day - 15 minutes is enough.
 
@@ -50,7 +50,7 @@ It tends to be easier if you close your eyes, I think. But feel free to gaze at 
 
 ### Breathing
 
-One technique is to focus on your breathing. In through your nose, out through your mouth. Slowly. Focus on how it feels. When words come, return to your breathing. Some people imagine breathing in energy or "good stuff" or whatever. Some people count their breaths to 10 and then over from 1 again. I don't like that personally because counting feels, to me, slightly like dialogue. It is effective at stopping other words, though.
+One technique is to focus on your breathing. In through your nose, out through your mouth. Slowly. Focus on how it feels. When words come, return to your breathing. Some people imagine breathing in energy or "good stuff" or whatever. Some people count their breaths to 10 and then over from 1 again. I don't use that myself, because counting feels, to me, slightly like dialogue. It is effective at stopping other words, though.
 
 ### Imagining
 
@@ -60,27 +60,30 @@ Imagine a spot of light in the middle of your forehead. Or maybe a laser. Shine 
 
 Compassionate meditation is an alternative that can feel good. Imagine a small sphere around you. Wish everything within it well. Give everything within compassion and love. Slowly expand your sphere. Smile and breathe.
 
+### Getting started
+
+Getting started can be the tricky part. One way to help this is to borrow techniques from hypnosis. For example, with each slow breath you may image yourself taking one step further down a ten step stair that leads to a door. When opened, the door leads to a calm nature scene that you have chosen in advance. You sit down and start your meditation.
+
+Also it helps if you are in a reasonably calm state to begin with. If you are all wound up, mind racing, maybe stressed about something, it will be much harder to let yourself settle down and relax.
+
 ## Brainwave entrainment
 
-The most effective way I know of reaching a meditative state is through sound. Specifically, through (brainwave entrainment)[http://en.wikipedia.org/wiki/Brainwave_entrainment]. I know. Just the word "brainwave" makes it sound like such a load of bullcrap.
+The most effective way I know of reaching a meditative state is through sound. Specifically, through [brainwave entrainment](http://en.wikipedia.org/wiki/Brainwave_entrainment). I know. Just the word "brainwave" makes it sound like such a load of bullcrap.
 
 Just like with meditation there are some weird claims about entrainment, like being able to overcome all sorts of maladies, heal wounds faster, etc. Ignore those things. If any of those benefits exists at all, they are just secondary effects of being able to relax and sleep better.
 
-What certainly is real, though, is that our brain sends out electromagnetic waves of various frequencies. Depending on what state we are in, different frequencies dominate. (Here)[http://en.wikipedia.org/wiki/Electroencephalography#Comparison_table] is a table of different frequencies and when they dominate. Meditationn happens in the alpha and theta regions.
+What certainly is real, though, is that our brain sends out electromagnetic waves of various frequencies. Depending on what state we are in, different frequencies dominate. [Here](http://en.wikipedia.org/wiki/Electroencephalography#Comparison_table) is a table of different frequencies and when they dominate. Meditation happens in the alpha and theta regions.
 
 What is also real, is that listening to auditory pulses of specified frequencies makes your brain emit those same frequencies stronger. Thus, listening to pulses of theta or alpha frequencies (4 - 13 Hz) makes you emit more of those. Of course the association between relaxation alpha waves might not go both ways. This might just be a mixup of cause and effect and making the brain emit alpha waves might not make you more relaxed.
 
 Well, studies show that they do. Less interesting to you, perhaps, is that anecdotal evidence from myself and everyone I know that have tried it (including my infant girl, who I put to sleep that way a few times..) is that it makes you go into a meditative state (or, if you like the terminology better, elicits the relaxation response) faster than anything else. It might just be placebo, but given the evidence above, it is probably not. Also, it will work on the first try, so it really is very easy for you to try it out for yourself.
 
-There are many programs that help you put together these sort of frequency curves, add background noise and stuff. I recommend (Gnaural)[http://gnaural.sourceforge.net/], which is free open source and works on Win, Mac and Linux.
+There are many programs that help you put together these sort of frequency curves, add background noise and stuff. [Neuro-programmer 3 Home](http://www.transparentcorp.com/products/np/) is very good, but only for Windows (rumoured to work on Linux + Wine) and a tad expensive. I recommend [Gnaural](http://gnaural.sourceforge.net/), which gives you very detailed control, is free open source and works on Win, Mac and Linux.
 
-There are many builtin examples, but I have posted a file that Gnaural can read, with a 15 minute 4-5 Hz meditation with isochronic pulses for headphones (here)[]. After the meditation phase is done (you will know without a doubt when that phase is done, because the higher fequencies will gently wake you up) I have put in 30 minutes of 40 Hz. If it helps you with your productive phase, let it run. If it gives you a headache, turn it off.
+There are many builtin examples, but I have posted a file that Gnaural can read, with a 15 minute 4-5 Hz meditation with isochronic pulses for headphones [here](https://gist.github.com/4673317). After the meditation phase is done (you will know without a doubt when that phase is done, because the higher frequencies will gently wake you up) I have put in 30 minutes of 40 Hz. If it helps you with your productive phase, let it run. If it gives you a headache, turn it off.
 
-So, in conclusion, don't put it off. Take 15 minutes and try it right now.
+Another good thing about entrainment is that it tells you when you are done, so you don't have to wonder about how long you have been sitting.
 
-http://www.lef.org/news/LefDailyNews.htm?NewsID=12407&Section=Disease
-http://www.kurzweilai.net/meditation-may-change-brains-physical-structure-strengthen-connections
-http://www.kurzweilai.net/demystifying-meditation-brain-imaging-illustrates-how-meditation-reduces-pain
-http://philosophistry.com/archives/2011/02/benefits-of-meditation.html
-http://www.kurzweilai.net/mindfulness-meditation-training-changes-brain-structure-in-8-weeks
-http://www.scientificamerican.com/podcast/episode.cfm?id=mediation-correlated-with-structura-11-01-22
+So, in conclusion, don't put it off. Take 15 minutes and try it right now. Then tell me in the comments what you thought.
+
+
