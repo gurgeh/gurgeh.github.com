@@ -24,7 +24,7 @@ But you don't actually have to care about any of those things. The effects after
 
 Before settling down to meditate, decide on what you want to work on next. If there is some creativity or problem-solving involved, start by very quickly going through the problem in your mind, just long enough so that you have put what needs to be done within what constraints into words.
 
-Now here's the trick - don't solve or design anything yet. Fight that urge. Let those thoughts vanish for now. It is especially important that you don't think about the task during the actualy meditation. Your subconscious will take care of that.
+Now here's the trick - don't solve or design anything yet. Fight that urge. Let those thoughts vanish for now. It is especially important that you don't think about the task during the actual meditation. Your subconscious will take care of that.
 
 Afterwards you will be in a mentally refreshed state, ready to jump in and create. It feels different.
 
@@ -42,11 +42,11 @@ First part you can do, right? I suppose you can lie down as well, but we are not
 
 But the second part. No inner dialogue. That usually scares people. "I can never do that". "Even if you think about not thinking, that is thinking too", etc. This is where various techniques come in. You will have to find out what works for you.
 
-The most important thing to know is that you will have thoughts. Your inner dialogue will notice the silence and try to kickstart all sorts of new interesting internal conversations. This is not failure or you doing something wrong, it is what brains do. Just notice what happens and, no matter how tempting and interesting that though seemed, let it pass. It will come back to you when you are done. Redirect your attention to something else. How good it feels to breathe out, for example. The longer you sit, the more space it will be between these attempts of your brain to start the dialogue again. Also, as you meditate more often, your thought will get sparser quicker.
+The most important thing to know is that you will have thoughts. Your inner dialogue will notice the silence and try to kickstart all sorts of new interesting internal conversations. This is not failure or you doing something wrong, it is what brains do. Just notice what happens and, no matter how tempting and interesting that thought seemed, let it pass. It will come back to you when you are done. Redirect your attention to something else. How good it feels to breathe out, for example. The longer you sit, the more space it will be between these attempts of your brain to start the dialogue again. Also, as you meditate more often, your thoughts will get sparser quicker.
 
 When you start out, or when you pick up the habit after a long hiatus, you will have lots of meta thoughts of the type "Hmm.. how am I doing?", "Is this right?", "This does feel kinda good" and "OMG, my mind was totally silent for a bit there!". That, too, is normal. When you catch yourself doing it, don't judge. Just let the thought go.
 
-It tends to be easier if you close your eyes, I think. But feel free to gaze at something calming or hypnotic or just in to the distant. For something to focus on besides the mind's chatter, try one or two of the suggestions below.
+It tends to be easier if you close your eyes, I think. But feel free to gaze at something calming or hypnotic or just into the distance. For something to focus on besides the mind's chatter, try one or two of the suggestions below.
 
 ### Breathing
 
@@ -74,7 +74,7 @@ Just like with meditation there are some weird claims about entrainment, like be
 
 What certainly is real, though, is that our brain sends out electromagnetic waves of various frequencies. Depending on what state we are in, different frequencies dominate. [Here](http://en.wikipedia.org/wiki/Electroencephalography#Comparison_table) is a table of different frequencies and when they dominate. Meditation happens in the alpha and theta regions.
 
-What is also real, is that listening to auditory pulses of specified frequencies makes your brain emit those same frequencies stronger. Thus, listening to pulses of theta or alpha frequencies (4 - 13 Hz) makes you emit more of those. Of course the association between relaxation alpha waves might not go both ways. This might just be a mixup of cause and effect and making the brain emit alpha waves might not make you more relaxed.
+What is also real, is that listening to auditory pulses of specified frequencies makes your brain emit those same frequencies stronger. Thus, listening to pulses of theta or alpha frequencies (4 - 13 Hz) makes you emit more of those. Of course the association between relaxation and alpha waves might not go both ways. This might just be a mixup of cause and effect and making the brain emit more alpha waves might not make you more relaxed.
 
 Well, studies show that they do. Less interesting to you, perhaps, is that anecdotal evidence from myself and everyone I know that have tried it (including my infant girl, who I put to sleep that way a few times..) is that it makes you go into a meditative state (or, if you like the terminology better, elicits the relaxation response) faster than anything else. It might just be placebo, but given the evidence above, it is probably not. Also, it will work on the first try, so it really is very easy for you to try it out for yourself.
 
