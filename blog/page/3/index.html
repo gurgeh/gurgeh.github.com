@@ -9,7 +9,7 @@
   <meta name="author" content="David Fendrich">
 
   
-  <meta name="description" content="Le grand assumptionThe assumption of seed AI is this: If we can make a program intelligent enough, a &#8220;seed&#8221; of intelligence, we can also &hellip;">
+  <meta name="description" content="The deed is done.I and my friend Nils made a &#8220;sprint&#8221; last night, where we finished the first version of our seed AI.First we made a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,45 @@
   <header>
     
       <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2007/09/05/1250-press-return/">12:50, Press Return</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-09-05T00:00:00+02:00" pubdate data-updated="true">Sep 5<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+The deed is done.<br /><br />I and my friend Nils made a &#8220;sprint&#8221; last night, where we finished the first version of our seed AI.<br /><br />First we made a simple IQ-function that tests how well a program (a Program Generator or <span style="font-style: italic;">PG</span>) can generate new programs (<span style="font-style: italic;">leaves</span>) from feedback of how close a leaf is to what we want.<br /><br />A PG that receives the best IQ so far gets a chance to generate new PG&#8217;s, in effect it becomes a Program Generator Generator. We call this state a <span style="font-style: italic;">Challenger</span>. When a Challenger generates a new PG with the best IQ so far, it has verified that not only does it have good IQ, but it can produce other programs with good IQ, and is thus promoted to the status of <span style="font-style: italic;">Master </span>(and the smart PG gets to be Challenger).<span style="font-style: italic;"><br /></span><br />The programs are generated and run in a circular buffer under a virtual machine, where all sequences of integers are valid programs and no operators can throw exceptions. Such a VM is much slower than machine code, but the process gets faster than if it were running on bare bones x86, because on an x86 (or other architecture) most bytes are meaningless and will throw exceptions, which are slow to process. A PG that is good enough (for example a human) to understand how to write code without generating (many) exceptions, would theoretically run faster on x86, but our current primitive PGs will benefit from a virtual environment.<span style="font-style: italic;"><br /><br /></span>Anyway, we wrote the code, pressed Enter (the title is a reference to the nice movie Pi), and voíla, our random generating seed started finding more intelligent programs than itself - Challengers. After a while, Nils calls it 15 seconds, a Challenger managed to become Master and after a longer while the Master produced a Challenger that later became the third generation Master. Spectacular!<br /><br />Now we just need a better IQ test and a way to inspect the generated programs! Well, we also need tons and tons of hardware. This is the sort of task that could happily use up Google&#8217;s entire computer armada for a year and still benefit from more. Hmm.. perhaps if I ask them nicely..</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
         <h1 class="entry-title"><a href="/blog/2007/08/30/seed-ai/">Seed AI</a></h1>
       
     
@@ -141,6 +180,10 @@ Thanks for the comment on my knol, David!<BR/>You&#39;re right, it sounds very s
       </li>
     
       <li class="post">
+        <a href="/blog/2013/04/09/a-better-soylent/">A better Soylent - designing a simple, &#8220;optimal&#8221; nutrition shake</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/02/22/a-better-algorithm-for-backups-and-rolling-logs/">A better algorithm for backups and rolling logs</a>
       </li>
     
@@ -150,10 +193,6 @@ Thanks for the comment on my knol, David!<BR/>You&#39;re right, it sounds very s
     
       <li class="post">
         <a href="/blog/2012/11/22/compile-time-loops-in-c-plus-plus-11-with-trampolines-and-exponential-recursion/">Compile time loops in C++11 with trampolines and exponential recursion</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/10/31/c-plus-plus-11-and-boost-succinct-like-python/">C++11 and Boost - succinct like Python</a>
       </li>
     
   </ul>
