@@ -65,7 +65,7 @@ We need vitamins to live. It is fairly well-known how much we need to survive, b
 If we cover the vitamin need with a multi-vitamin, it is [probably](http://www.livestrong.com/article/302783-daily-dose-the-vitamins-you-should-or-shouldnt-be-taking/) best to take it in divided doses with "meals" (at least fat), for proper uptake. There are multi-vitamins made to be taken in divided doses, for example these [Two-per-day capsules]
 (http://www.lef.org/Vitamins-Supplements/Item01714/Two-Per-Day-Capsules.html). Otherwise you can just split one, if it is dry.
 
-Almost all multi-vitamins come with the alpha form of vitamin E, which some say is a problem. This might displace the other forms of vitamin E, and actually make you deficient. In my proposed recipe, I will get plenty of gamma-tocopherol from the flaxseed oil, so it is probably OK. Also, [this nutritional researcher](http://lpi.oregonstate.edu/ss03/vitamine.html) notes that it might be a confusion of cause and effect and that low gamma-tocopherol may just be a indicator that something else is wrong.
+Almost all multi-vitamins come with the alpha form of vitamin E, which some say is a problem. This might displace the other forms of vitamin E, and actually make you deficient. In Goop, I will get plenty of gamma-tocopherol from the flaxseed oil, so it is probably OK. Also, [this nutritional researcher](http://lpi.oregonstate.edu/ss03/vitamine.html) notes that it might be a confusion of cause and effect and that low gamma-tocopherol may just be a indicator that something else is wrong.
 
 Vitamin K is not a part of most multi-vitamins, so we need that through our diet.
 
@@ -159,13 +159,13 @@ For a physically active male, even if he would want mild calorie restriction, th
 
 If I wanted less calories, let's say for dieting, I would cut up to half the almonds, half the flaxseed oil and 100g of the oatbran. It is not supposed to be healthy to lose more than 0.5 kg (1 pound) per week, which is about 600 calories per day below your normal intake, so don't go overboard.
 
-I will just mix the ingredients together to a shake, but try just to mix just a little, since an even goo would raise the glycemic index. I still want to see oats. For variation, oat brans (say 200g), water (3 dl, pour over when boiling), oil (at most ½ dl), stevia and cinnamon or cacao as a flavouring can be blended (once again, not too much) and spread thinly and baked in the oven in 150 degrees C for 50-60 minutes, for a dry, not quite delicious but nutritious cookie. Since it is dry, it will be edible for many days. The low temperature will not oxidize the oil. 
+I will just mix the ingredients and some water together to a shake or drinkable substance. I will try to mix just a little, since a smooth goo would raise the glycemic index. I still want to see oats. For variation, oat brans (say 200g), water (3 dl, pour over when boiling), oil (at most ½ dl), stevia and cinnamon or cacao as a flavouring can be blended (once again, not too smooth) and spread thinly and baked in the oven in 150 degrees C for 50-60 minutes, for a dry, not quite delicious but nutritious cookie. Since it is dry, it will be edible for many days. The low temperature will not oxidize the oil or destroy other nutrients. 
 
 I will also eat sugar-free gum after meals, to make sure that my gums get some workout. Also a [clean mouth](http://www.deltadentalins.com/oral_health/heart.html) is imperative for a healthy heart.
 
 ### Experiment
 
-As an experiment, I will consume exclusively this recipe for a few weeks (at least three) and measure blood pressure, weight, body composition (if I can find my body composition scale), resting heart rate, mental ability, athletic ability and general well being continuously. A few people I know have expressed interest in doing the same. It would be interesting to measure various markers from my blood as well. Unfortunately, where I live this is not really offered as a separate service but rather as part of a complete health exam, which is quite expensive to do twice in succession. I will probably do it afterwards, though.
+As an experiment, I will consume Goop exclusively for a few weeks (at least three) and measure blood pressure, weight, body composition (if I can find my body composition scale), resting heart rate, mental ability, athletic ability and general well being continuously. A few people I know have expressed interest in doing the same. It would be interesting to measure various markers from my blood as well. Unfortunately, where I live this is not really offered as a separate service but rather as part of a complete health exam, which is quite expensive to do twice in succession. I will probably do it afterwards, though.
 
 I will not go cold turkey from normal food immediately, but increase gradually, mainly to make sure I can handle the fiber content.
 
