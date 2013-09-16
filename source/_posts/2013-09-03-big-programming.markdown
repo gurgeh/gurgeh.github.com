@@ -13,14 +13,9 @@ I think that the divide between *coding the details* and *describing the flow* o
 
 ## Contrasts
 
-In the big picture, visual programming is very natural. It is, in fact, so natural that we often make flowcharts of how systems work. It would be better if these flowcharts would actually be the system, rather than an incomplete, possibly outdated description.
+_In the big picture_, we want good documentation.
 
-In the details, visual programming is just an inconvient gimmick.
-
-
-In the big picture, we want good documentation.
-
-In the details, documentation is often outdated and redundant.
+_In the details_, documentation is often outdated and redundant.
 
 
 In the big picture, uncontrolled side effects and mutable global variables lead to an unmaintainable mess where hidden assumptions are everywhere.
@@ -28,39 +23,45 @@ In the big picture, uncontrolled side effects and mutable global variables lead 
 In the details, say within one or a handful of functions, mutation can be efficient, idiomatic and easy to understand.
 
 
-In the big picture, we often want to annotate functions with types, even if the language can induce them automatically or does not need them.
+In the big picture, we often want to annotate functions with types, even if the language can infer them automatically or does not need them.
 
 In the details, we don't want to litter the code with explicit types, making it harder to read and write and harder to change implementation details.
 
 
 In the big picture exceptions are dangerous beasts. They are essentially gotos. Non-local behaviour that can make a system hard to reason about and that can give suprising failure modes.
 
-In the details, exceptions are a convenient way of signalling that the input to a non-total function did not live up to its contract or that the surrounding system (hardware, DB, etc) are not in the assumed state. If we can signal these contract breaches compile-time, using the type system, this is great. Unfortunately not everything can be statically proven.
+In the details, exceptions are a convenient way of signalling that the input to a non-total function did not live up to its contract or that the surrounding system (hardware, DB, etc) are not in the assumed state. If we can signal these breaches of contract compile-time, using the type system, this is great. Unfortunately not everything can be statically proven.
+
+
+In the big picture, visual programming is very natural. It is, in fact, so natural that we often make flowcharts of how systems work. It would be better if these flowcharts would actually be the system, rather than an incomplete, possibly outdated description.
+
+In the details, visual programming is just an inconvenient gimmick. IMHO. It may change one day.
 
 ## The feature checklist
 
--Pythonesque syntax
--Statically typed
--Strict evaluation
--Garbage collected
--Reference implementation compiled through LLVM
--Separate functions (small) and components (big)
--Components are similar to coroutines and have named input and output pipes (like channels in Go, pipes in Haskell, more general than generators in e.g Python), which are part of their type. Pipes are synchronous/blocking.
--Even though pipes are synchronous, the standard libray has queue components that can be mounted on a pipe to make it asynchronous/non-blocking with an explicit queue size.
--An input pipe can be looped over or "manually" read. You may not peek.
--If a component loops over an input pipe, it may be inlined into the outputting component.
--Pipes can be attached to components with different connections, for example making the components run in parallel, in different processes, with target component on GPU, etc.
--A kind of linear typing for mutable data
--Mutable data can not be shared between components. If sent from one component to another, it becomes unreadable in the first.
--Constant data can be shared between components
--Algebraic datatypes, structs and vectors
--Pattern matching
--Components and functions are first class and can be curried
--A function cannot have side effects. Effects are triggered through pipes to components.
--The C FFI has to be wrapped as components and is the only way to get effects. None are builtin.
--Contracts for assumptions which do not fit the type system.
--Preprocessing/macro system with the full power of the language, like Lisp or Template Haskell.
--Simple textual metadata can be attached to components, pipes and connections, which help when laying out the connections visually in a flowchart-type interface.
+- Pythonesque syntax
+- Statically typed
+- Automatically type inferred
+- Strict evaluation
+- Garbage collected
+- Reference implementation compiled through LLVM
+- Separate functions (small) and components (big)
+- Components are similar to coroutines and have named input and output pipes (like channels in Go, pipes in Haskell, more general than generators in e.g Python), which are part of their type. Pipes are synchronous/blocking.
+- Even though pipes are synchronous, the standard libray has queue components that can be mounted on a pipe to make it asynchronous/non-blocking with an explicit queue size.
+- An input pipe can be looped over or read "manually" one value at a time. You may not peek.
+- If a component loops over an input pipe, it may be inlined into the outputting component.
+- Pipes can be attached to components with different connections, for example making the components run in parallel, in different processes, with target component on GPU, etc.
+- A kind of linear typing for mutable data
+- Mutable data cannot be shared between components. If sent from one component to another, it becomes unreadable in the first.
+- Constant data can be shared between components.
+- Algebraic datatypes, structs and vectors
+- Pattern matching
+- Components and functions are first class and can be curried.
+- A function cannot have side effects. Effects are triggered through pipes to components.
+- The C FFI has to be wrapped as components and is the only way to get effects. None are builtin.
+- Contracts for assumptions which do not fit the type system.
+- Preprocessing/macro system with the full power of the language, like Lisp or Template Haskell.
+- Simple textual metadata can be attached to components, pipes and connections, which help when laying out the connections visually in a flowchart-type interface.
 
 ### Components
 A component is a function that may have input arguments, but not return arguments. It also has zero or more input pipes, output pipes or bidirectional pipes. A component can send data to an output pipe and it can receive data on an input pipe, either by "forall" to loop until the pipe closes or "get" to block until it gets the next value. Pipes can also be bidirectional, which means that you can both send and receive. This is convenient, for example when you want to make database queries to a component.
@@ -69,10 +70,32 @@ A pipe can be closed both upstream (sender has run out of data) and downstream (
 
 If a component has only one input pipe, it is deterministic in the sense that the behaviour is identical to a pure function with a lazy list or generator as input argument. This means that it is easier to test. If we had a "peek" function that could check if an input pipe had anything new yet, the receiving component could loop and do different stuff depending on when a new value is ready, begging for race conditions. If a component has more than one input pipe it is not deterministic in general, since "forall" can take several pipes of the same type and emit the values in the order they are produced.
 
-Components can clean up after a pipe closes, which I will describe more in a later post in conjunction with exceptions.
+Components may clean up after a pipe closes, which I will describe more in a later post in conjunction with exceptions.
+
+A component with one input pipe and one output sounds very similar to a function. You are supposed to use a function if there is a one-to-one mapping between input and output and you do not keep state. isPrime (:: Int -> Bool) would most naturally be a function. Run length encoding, for example, would more naturally be a component.
+
+    #no arguments, one input pipe named values and one output pipe named encoding.
+    runLengthEncode :: Eq a => | values a || encoding (a, Int)
+    runLengthEncode():
+      first = True
+      count = 0
+      oldval...
+      foreach value in values:
+        if first:
+          oldval = value
+          count = 1
+        elif value == oldval:
+          count += 1
+        else:
+          put encoding (oldval, count)
+          oldval = value
+          count = 1
+      if count:
+          put encoding (oldval, count)
+
+Ignore syntax, the use of Haskell-style type classes and the detail of what default value oldval will get at the start, when "values" just have to be a type that is comparable. When we have just one input and one output, this is equivalent to something like a generator using "yield" in Python.
 
 I don't think pipes need to come with any performance overhead compared to a normal function call, so they are supposed to be used a lot.
-
 
 ### Concurrency
 
@@ -95,10 +118,10 @@ Since side effects are often slightly troublesome when testing, it is my intenti
 We use two types of files to program Glow. The detail files, which can contain anything, and the overview files, which may only contain constants and how components are connected to each other. An overview file may not use macros.
 
 Both are editable with any text editor, but the overview file can also be edited visually as a vectorized flowchart (vectorized to zoom in on details). This should have a number of benefits.
--The overview chart is good documentation that is never out of date. Not for a library API, but for a system or application.
--You can design programs on your tablet or phone, by touch. Fill in the details when you get to a keyboard.
--You get a visual REPL for debugging and testing. Change constants (read more below) and watch changes, live.
--The flowchart may also serve as a simple control panel for the application in production.
+- The overview chart is good documentation that is never out of date. Not for a library API, but for a system or application.
+- You can design programs on your tablet or phone, by touch. Fill in the details when you get to a keyboard.
+- You get a visual REPL for debugging and testing. Change constants (read more below) and watch changes, live.
+- The flowchart may also serve as a simple control panel for the application in production.
 
 It is important that you should never need a special application to view the overview file. It must be perfectly legible as text, even when generated by a flowchart-editor.
 
