@@ -177,14 +177,10 @@
 <pre><code>#no arguments, one input pipe named values and one output pipe named encoding.
 runLengthEncode :: Eq a =&gt; | values a || encoding (a, Int)
 runLengthEncode():
-  first = True
-  count = 0
-  oldval...
+  oldval = get values
+  count = 1
   foreach value in values:
-    if first:
-      oldval = value
-      count = 1
-    elif value == oldval:
+    if value == oldval:
       count += 1
     else:
       put encoding (oldval, count)
@@ -194,7 +190,7 @@ runLengthEncode():
       put encoding (oldval, count)
 </code></pre>
 
-<p>Ignore syntax, the use of Haskell-style type classes and the detail of what default value oldval will get at the start, when &#8220;values&#8221; just have to be a type that is comparable. When we have just one input and one output, this is equivalent to something like a generator using &#8220;yield&#8221; in Python.</p>
+<p>Ignore syntax, the use of Haskell-style type classes and the detail of what happens if there is no first value to get. When we have just one input and one output, this is equivalent to something like a generator using &#8220;yield&#8221; in Python.</p>
 
 <p>I don&#8217;t think pipes need to come with any performance overhead compared to a normal function call, so they are supposed to be used a lot.</p>
 
@@ -251,7 +247,7 @@ TheExtractor.urls -&gt; LinkQueue.put
 
 <p>Also, if it was not obvious, there is no compiler or anything else yet. Not a shred of code. I know that a compiler (and visual editor!) is a serious undertaking. I think that this particular programming language does not rely on any magic that makes it harder to implement than, say, Rust. I also think it would be different enough to stand out. Perhaps others are intrigued and willing to help out?</p>
 
-<p>This was inspired by Bret Victor, the Haskell pipes library, Go, my experience from work and many other things.</p>
+<p>This was inspired by Bret Victor, the Haskell pipes library, Go, my experience from work and many other things. In fact, if you have not seen Bret Victor&#8217;s brilliant <a href="http://vimeo.com/71278954">&#8220;Future of programming&#8221;</a> and <a href="http://vimeo.com/36579366">&#8220;Inventing on principle&#8221;</a>, go watch them already.</p>
 </div>
 
 
