@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: reasoning | IFHO]]></title>
-  <link href="http://fendrich.se/blog/categories/reasoning/atom.xml" rel="self"/>
-  <link href="http://fendrich.se/"/>
-  <updated>2013-04-11T16:47:49+02:00</updated>
-  <id>http://fendrich.se/</id>
+  <link href="http://gurgeh.github.com/blog/categories/reasoning/atom.xml" rel="self"/>
+  <link href="http://gurgeh.github.com/"/>
+  <updated>2013-09-17T10:18:00+02:00</updated>
+  <id>http://gurgeh.github.com/</id>
   <author>
     <name><![CDATA[David Fendrich]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Why planning is hard]]></title>
-    <link href="http://fendrich.se/blog/2007/12/21/why-planning-is-hard/"/>
+    <link href="http://gurgeh.github.com/blog/2007/12/21/why-planning-is-hard/"/>
     <updated>2007-12-21T00:00:00+01:00</updated>
-    <id>http://fendrich.se/blog/2007/12/21/why-planning-is-hard</id>
+    <id>http://gurgeh.github.com/blog/2007/12/21/why-planning-is-hard</id>
     <content type="html"><![CDATA[<div class='post'>
 After my last post about planning I thought some more on the issue and had something close to an epiphany.<br /><br />When you plan, in the solitaire sense, you need rules governing what moves are legal - transformation rules. If you treat these rules like black boxes, just understanding them by playing around with positions and see how they behave, you can only do so much. An important rule might be usable extremely rarely, but nevertheless be the key to success if you specifically aim to reach a position where it is applicable. This means that you might miss how important a rule (or an exception to a rule) is, when just "black-boxing" it, because it's usefulness or purpose might never come up.<br /><br />Even if you have no such rare rules in your system, the best you can hope for if you want to analyze a system when black-boxing is just to formulate your own internal rules for how the system seems to behave.<br /><br />Thus, <span style="font-weight: bold;">the reason planning is hard is that you need to be able to analyze/understand code to understand transformation rules in general</span> and understanding code is hard. You need to understand when you may take actions and what these actions do, i.e understand transformation rules, whatever system you are planning for.<br /><br /><span style="font-size:130%;">A small prediction<br /><br /></span>The reason why good planning is a key to analyze code and prove things in formal systems is that you need to understand code in order to plan. Thus, I postulate, when something can analyze code better than I, it will quickly learn to do everything else intelligence-based better than I. The implication probably works both ways, so the first program that is thoroughly smarter than I will most likely have it's foundation laid upon the ability to reason about code.</div>
 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: milliblogging | IFHO]]></title>
-  <link href="http://fendrich.se/blog/categories/milliblogging/atom.xml" rel="self"/>
-  <link href="http://fendrich.se/"/>
-  <updated>2013-04-11T16:47:49+02:00</updated>
-  <id>http://fendrich.se/</id>
+  <link href="http://gurgeh.github.com/blog/categories/milliblogging/atom.xml" rel="self"/>
+  <link href="http://gurgeh.github.com/"/>
+  <updated>2013-09-17T10:18:00+02:00</updated>
+  <id>http://gurgeh.github.com/</id>
   <author>
     <name><![CDATA[David Fendrich]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Milliblogging - An essay in 7 tweets]]></title>
-    <link href="http://fendrich.se/blog/2010/08/19/milliblogging-essae-in-7-tweets/"/>
+    <link href="http://gurgeh.github.com/blog/2010/08/19/milliblogging-essae-in-7-tweets/"/>
     <updated>2010-08-19T00:00:00+02:00</updated>
-    <id>http://fendrich.se/blog/2010/08/19/milliblogging-essae-in-7-tweets</id>
+    <id>http://gurgeh.github.com/blog/2010/08/19/milliblogging-essae-in-7-tweets</id>
     <content type="html"><![CDATA[<div class='post'>
 Twitter became popular because of its 140 character restriction, orginally designed to fit an SMS.<br /><br />This restriction promises the follower that everything will be easily digested, but perhaps more important is the benefit to the writer.<br /><br />Often someone starts a blog, but then quits when every post becomes too long. Too ambitious. Twitter frees the writer of such pressure.<br /><br />Pressure to be concise is great, but I propose that the 140 char limit is too limiting to express anything interesting. Tweets are dumb.<br /><br />Instead of microblogging, I propose #milliblogging. You must constrict yourself to (maybe?) 1000 characters - the length of 7 tweets.<br /><br />Would you join such a site? Would you rather it be an extended Twitter-client or a new community?<br /><br />#Milliblogging - for people with something to say.<br /><br />(This post was also tweeted by me on <a href="http://www.twitter.com/fnedrik">http://www.twitter.com/fnedrik</a> )</div>
 

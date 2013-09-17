@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Big programming, small programming - IFHO</title>
+  <meta name="author" content="David Fendrich">
+
+  
+  <meta name="description" content="Programming is complicated. Different programs have different abstraction levels, domains, platforms, longevity, team sizes, etc ad infinitum. There &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://gurgeh.github.com/blog/2013/09/03/big-programming/">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="IFHO" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  
+<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+
+</head>
+
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  <!--  <div id="logoLeft">{</div><div id="logText"><img src="/images/SimpsonDavid.png" width="36" height="36"></div><div id="logoRight">}</div>
+  	<div class="clear"></div>-->
+  </div>
+  <h1><a href="/">IFHO</a></h1>
+  
+    <h2>In Fendrich's Humble Opinion</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:gurgeh.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Big Programming, Small Programming</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-03T17:39:00+02:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Programming is complicated. Different programs have different abstraction levels, domains, platforms, longevity, team sizes, etc ad infinitum. There is something fundamentally different between the detailed instructions that goes into, say, computing a checksum and the abstractions when defining the flow of data in any medium-sized system.</p>
+
+<p>I think that the divide between <em>coding the details</em> and <em>describing the flow</em> of a program is so large that a programming language could benefit immensely from keeping them conceptually separate. This belief has led me to design a new programming language - <em>Glow</em> - that has this separation at its core.</p>
+
+<!-- more -->
+
+
+<h2>Contrasts</h2>
+
+<p><em>In the big picture</em>, we want good documentation.</p>
+
+<p><em>In the details</em>, documentation is often outdated and redundant.</p>
+
+<p>In the big picture, uncontrolled side effects and mutable global variables lead to an unmaintainable mess where hidden assumptions are everywhere.</p>
+
+<p>In the details, say within one or a handful of functions, mutation can be efficient, idiomatic and easy to understand.</p>
+
+<p>In the big picture, we often want to annotate functions with types, even if the language can infer them automatically or does not need them.</p>
+
+<p>In the details, we don&#8217;t want to litter the code with explicit types, making it harder to read and write and harder to change implementation details.</p>
+
+<p>In the big picture exceptions are dangerous beasts. They are essentially gotos. Non-local behaviour that can make a system hard to reason about and that can give suprising failure modes.</p>
+
+<p>In the details, exceptions are a convenient way of signalling that the input to a non-total function did not live up to its contract or that the surrounding system (hardware, DB, etc) are not in the assumed state. If we can signal these breaches of contract compile-time, using the type system, this is great. Unfortunately not everything can be statically proven.</p>
+
+<p>In the big picture, visual programming is very natural. It is, in fact, so natural that we often make flowcharts of how systems work. It would be better if these flowcharts would actually be the system, rather than an incomplete, possibly outdated description.</p>
+
+<p>In the details, visual programming is just an inconvenient gimmick. IMHO. It may change one day.</p>
+
+<h2>The feature checklist</h2>
+
+<ul>
+<li>Pythonesque syntax</li>
+<li>Statically typed</li>
+<li>Automatically type inferred</li>
+<li>Strict evaluation</li>
+<li>Garbage collected</li>
+<li>Reference implementation compiled through LLVM</li>
+<li>Separate functions (small) and components (big)</li>
+<li>Components are similar to coroutines and have named input and output pipes (like channels in Go, pipes in Haskell, more general than generators in e.g Python), which are part of their type. Pipes are synchronous/blocking.</li>
+<li>Even though pipes are synchronous, the standard libray has queue components that can be mounted on a pipe to make it asynchronous/non-blocking with an explicit queue size.</li>
+<li>An input pipe can be looped over or read &#8220;manually&#8221; one value at a time. You may not peek.</li>
+<li>If a component loops over an input pipe, it may be inlined into the outputting component.</li>
+<li>Pipes can be attached to components with different connections, for example making the components run in parallel, in different processes, with target component on GPU, etc.</li>
+<li>A kind of linear typing for mutable data</li>
+<li>Mutable data cannot be shared between components. If sent from one component to another, it becomes unreadable in the first.</li>
+<li>Constant data can be shared between components.</li>
+<li>Algebraic datatypes, structs and vectors</li>
+<li>Pattern matching</li>
+<li>Components and functions are first class and can be curried.</li>
+<li>A function cannot have side effects. Effects are triggered through pipes to components.</li>
+<li>The C FFI has to be wrapped as components and is the only way to get effects. None are builtin.</li>
+<li>Contracts for assumptions which do not fit the type system.</li>
+<li>Preprocessing/macro system with the full power of the language, like Lisp or Template Haskell.</li>
+<li>Simple textual metadata can be attached to components, pipes and connections, which help when laying out the connections visually in a flowchart-type interface.</li>
+</ul>
+
+
+<h3>Components</h3>
+
+<p>A component is a function that may have input arguments, but not return arguments. It also has zero or more input pipes, output pipes or bidirectional pipes. A component can send data to an output pipe and it can receive data on an input pipe, either by &#8220;forall&#8221; to loop until the pipe closes or &#8220;get&#8221; to block until it gets the next value. Pipes can also be bidirectional, which means that you can both send and receive. This is convenient, for example when you want to make database queries to a component.</p>
+
+<p>A pipe can be closed both upstream (sender has run out of data) and downstream (receiver has found what it is looking for). Since a pipe can be closed downstream, you can compose strict pipelines that behave lazily by terminating early when they are done, yet are nicely decoupled.</p>
+
+<p>If a component has only one input pipe, it is deterministic in the sense that the behaviour is identical to a pure function with a lazy list or generator as input argument. This means that it is easier to test. If we had a &#8220;peek&#8221; function that could check if an input pipe had anything new yet, the receiving component could loop and do different stuff depending on when a new value is ready, begging for race conditions. If a component has more than one input pipe it is not deterministic in general, since &#8220;forall&#8221; can take several pipes of the same type and emit the values in the order they are produced.</p>
+
+<p>Components may clean up after a pipe closes, which I will describe more in a later post in conjunction with exceptions.</p>
+
+<p>A component with one input pipe and one output sounds very similar to a function. You are supposed to use a function if there is a one-to-one mapping between input and output and you do not keep state. isPrime (:: Int -> Bool) would most naturally be a function. Run length encoding, for example, would more naturally be a component.</p>
+
+<pre><code>#no arguments, one input pipe named values and one output pipe named encoding.
+runLengthEncode :: Eq a =&gt; | values a || encoding (a, Int)
+runLengthEncode():
+  first = True
+  count = 0
+  oldval...
+  foreach value in values:
+    if first:
+      oldval = value
+      count = 1
+    elif value == oldval:
+      count += 1
+    else:
+      put encoding (oldval, count)
+      oldval = value
+      count = 1
+  if count:
+      put encoding (oldval, count)
+</code></pre>
+
+<p>Ignore syntax, the use of Haskell-style type classes and the detail of what default value oldval will get at the start, when &#8220;values&#8221; just have to be a type that is comparable. When we have just one input and one output, this is equivalent to something like a generator using &#8220;yield&#8221; in Python.</p>
+
+<p>I don&#8217;t think pipes need to come with any performance overhead compared to a normal function call, so they are supposed to be used a lot.</p>
+
+<h3>Concurrency</h3>
+
+<p>Components can be run concurrently and it should &#8220;just work&#8221;, since components cannot share mutable data. If you need shared mutable data, a component that keeps state and has more than one input pipe will no longer have any guarantees of determinism and could be used as (or wrap), for example, a database.</p>
+
+<p>The same component could also be run concurrently in parallel against the same input pipe, as long as the input and output order does not matter. This problem is inherent in parallelism. In MapReduce, the problem of the unordered output pipe is solved by attaching a key to each indata value, which can also be attached to the output.</p>
+
+<p>When connecting two components, the type of connection indicates how the output component is run. As mentioned in the checklist, above, you can also imagine GPU connections. Since all effects except local mutation are handled as pipe communication, a Glow component should not need many constraints to target a GPU.</p>
+
+<h3>Effects and FFI</h3>
+
+<p>No side-effects are built in to the language. Even stuff like current time and print are handled by a C FFI. A FFI must be wrapped as a component, so all effects are clearly visible as pipe communication. Since you might want the same output component to handle, for example, logging or file handling in many components, unattached output pipes with the same name and type are merged to one output pipe when two components with dangling outputs are connected.</p>
+
+<h3>Testing and dependency injection</h3>
+
+<p>Since side effects are often slightly troublesome when testing, it is my intention that a component connection can later be overriden (or monkey-patched, if you will) by a mock-component with the correct type. This means that the file system, database or clock for an entire application can be overriden for testing purposes or when you want to simply switch out a component across an application. I have not yet fully worked out how namespaces, etc, should work in this context.</p>
+
+<h2>Visual programming</h2>
+
+<p>We use two types of files to program Glow. The detail files, which can contain anything, and the overview files, which may only contain constants and how components are connected to each other. An overview file may not use macros.</p>
+
+<p>Both are editable with any text editor, but the overview file can also be edited visually as a vectorized flowchart (vectorized to zoom in on details). This should have a number of benefits.
+- The overview chart is good documentation that is never out of date. Not for a library API, but for a system or application.
+- You can design programs on your tablet or phone, by touch. Fill in the details when you get to a keyboard.
+- You get a visual REPL for debugging and testing. Change constants (read more below) and watch changes, live.
+- The flowchart may also serve as a simple control panel for the application in production.</p>
+
+<p>It is important that you should never need a special application to view the overview file. It must be perfectly legible as text, even when generated by a flowchart-editor.</p>
+
+<p>The overview file for a simple web scraper. Not final syntax:</p>
+
+<pre><code>LinkQueue :: queue
+Scraper :: urlGet timeout=5
+TheExtractor :: extractor
+LinkQueue.get -&gt; Scraper.urls
+Scraper.data -&gt; TheExtractor.data
+Scraper.error -&gt; Print.in
+TheExtractor.urls -&gt; LinkQueue.put
+</code></pre>
+
+<p>The lower case variables, like &#8220;queue&#8221; are components, but since a component can be in several places in a system, connected to different stuff and called with different arguments, each component needs an instantiation (one could imagine syntactic sugar for anonymous component instantitions. &#8220;Lambdas&#8221;). The word after the dot is the channel name. &#8220;->&#8221; is a standard connection. The flowchart for this file would be three objects connected in a circle, with &#8220;Scraper&#8221; also having a print connection.</p>
+
+<p>Note that what you would work with in this interface is not types and class hierarchies as you might in a modelling tool, but the actual component instances. The static data. Component instances and other data that is generated dynamically, either compile-time or runtime, would not show up. Only the concrete, static data, components and connections can be in the overview file. This is also why no macros are allowed in the overview file - how would an interface edit component connections that are generated compile time and not written explicitly in the original source?</p>
+
+<p>During runtime, the same flowchart-like interface could be used to add visualisers of data flowing through different pipes. Graphs, counters, latest value, etc, could be monitored. Perhaps color to indicate relative traffic.Just as objects in Python have a <strong>str</strong> or <strong>repl</strong> method, when they need to be printed, standard Glow data types could have html-representations rendered in the interface.</p>
+
+<p>I believe that the component+pipes concept lends itself very well to Functional Reactive Programming. A side-effect of this is that statically defined data could have controllers that dynamically changes the program behaviour during runtime. I&#8217;ll try to flesh out my ideas for that later.</p>
+
+<h2>In closing</h2>
+
+<p>This was just a first overview of Glow. I have not yet written about the type system, the module system, exceptions and contracts (yes, they are tightly coupled), metaprogramming and &#8220;sublanguages&#8221;, how functional reactive programming fits with components or, you know, the actual syntax. Most of that, except syntax (meh), module system (probably something close to MixML) and parts of the type system (higher-order stuff related to MixML or type classes) are already designed.</p>
+
+<p>Also, if it was not obvious, there is no compiler or anything else yet. Not a shred of code. I know that a compiler (and visual editor!) is a serious undertaking. I think that this particular programming language does not rely on any magic that makes it harder to implement than, say, Rust. I also think it would be different enough to stand out. Perhaps others are intrigued and willing to help out?</p>
+
+<p>This was inspired by Bret Victor, the Haskell pipes library, Go, my experience from work and many other things.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">David Fendrich</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-03T17:39:00+02:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://gurgeh.github.com/blog/2013/09/03/big-programming/" data-via="fnedrik" data-counturl="http://gurgeh.github.com/blog/2013/09/03/big-programming/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/blog/2013/04/09/a-better-soylent-good/" title="Previous Post: A better Soylent - designing a simple, "optimal" nutrition shake">&laquo; A better Soylent - designing a simple, "optimal" nutrition shake</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/09/03/big-programming/">Big programming, small programming</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/09/a-better-soylent-good/">A better Soylent - designing a simple, "optimal" nutrition shake</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/22/a-better-algorithm-for-backups-and-rolling-logs/">A better algorithm for backups and rolling logs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/24/pre-programming-mental-silence-meditation-with-entrainment/">Pre-programming Mental Silence Meditation with Entrainment</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/22/compile-time-loops-in-c-plus-plus-11-with-trampolines-and-exponential-recursion/">Compile time loops in C++11 with trampolines and exponential recursion</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/gurgeh">@gurgeh</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'gurgeh',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("fnedrik", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/fnedrik" class="twitter-follow-button" data-show-count="false">Follow @fnedrik</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - David Fendrich -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'ifho';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://gurgeh.github.com/blog/2013/09/03/big-programming/';
+        var disqus_url = 'http://gurgeh.github.com/blog/2013/09/03/big-programming/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+<a title="Real Time Analytics" href="http://getclicky.com/100529738"><img alt="Real Time Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
+<script src="//static.getclicky.com/js" type="text/javascript"></script>
+<script type="text/javascript">try{ clicky.init(100529738); }catch(e){}</script>
+<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100529738ns.gif" /></p></noscript>
+
+
+</body>
+</html>
